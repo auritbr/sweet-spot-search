@@ -28,9 +28,9 @@ import { CompactFinalCTA } from "@/components/CompactFinalCTA";
 export const Route = createFileRoute("/canal-de-denuncias")({
   head: () => ({
     meta: [
-      { title: "Canal de Denúncias e Relato Ético | Associação Maggu" },
-      { name: "description", content: "Conheça o Canal de Denúncias e Relato Ético da Associação Maggu e as orientações para encaminhamento responsável de situações relacionadas à integridade institucional." },
-      { property: "og:title", content: "Canal de Denúncias e Relato Ético | Associação Maggu" },
+      { title: "Canal de Denúncia e Relato Ético | Associação Maggu" },
+      { name: "description", content: "Conheça o Canal de Denúncia e Relato Ético da Associação Maggu e as orientações para encaminhamento responsável de situações relacionadas à integridade institucional." },
+      { property: "og:title", content: "Canal de Denúncia e Relato Ético | Associação Maggu" },
       { property: "og:description", content: "Orientações para encaminhamento responsável de situações relacionadas à integridade institucional." },
       { property: "og:type", content: "website" },
       { property: "og:url", content: "/canal-de-denuncias" },
@@ -82,7 +82,7 @@ function CanalDenuncias() {
   return (
     <main id="main">
       <PageHero
-        title="Canal de Denúncias e Relato Ético"
+        title="Canal de Denúncia e Relato Ético"
         eyebrow="Integridade"
         subtitle="Um espaço seguro para comunicar situações que possam contrariar os princípios, as normas ou a integridade institucional da Associação Maggu."
         image="https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=1920&q=80"

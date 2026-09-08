@@ -127,7 +127,7 @@ function Transparencia() {
             <Block eyebrow="Integridade" title="Integridade e conduta">
               <p className="text-sm leading-relaxed text-brand-gray">Orientações e canais para o encaminhamento responsável de situações relacionadas à integridade institucional.</p>
               <div className="mt-4 flex flex-wrap gap-3">
-                <Link to="/canal-de-denuncias" className="inline-flex rounded-full bg-brand-petrol px-5 py-2 text-sm font-bold text-primary-foreground transition hover:bg-brand-red">Canal de Denúncias</Link>
+                <Link to="/canal-de-denuncias" className="inline-flex rounded-full bg-brand-petrol px-5 py-2 text-sm font-bold text-primary-foreground transition hover:bg-brand-red">Canal de Denúncia</Link>
                 <Link to="/transparencia/governanca-integridade" className="inline-flex rounded-full border border-brand-petrol/25 px-5 py-2 text-sm font-bold text-brand-petrol transition hover:bg-brand-soft">Governança e Integridade</Link>
               </div>
               <div className="mt-4"><DocumentList category="Integridade" /></div>

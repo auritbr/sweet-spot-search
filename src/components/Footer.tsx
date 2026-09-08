@@ -7,25 +7,25 @@ const institucional = [
   { label: "Quem Somos", to: "/quem-somos" },
   { label: "Equipe", to: "/equipe" },
   { label: "Ecossistema", to: "/ecossistema" },
+  { label: "Impacto & Memória", to: "/impacto-memoria" },
   { label: "Transparência", to: "/transparencia" },
   { label: "Projetos", to: "/projetos" },
   { label: "Agenda", to: "/agenda" },
   { label: "ODS / Maggu 2030", to: "/ods-maggu-2030" },
-
 ];
 
 const navegacao = [
+  { label: "Participe", to: "/participe" },
   { label: "Notícias", to: "/noticias" },
   { label: "Galeria", to: "/galeria" },
   { label: "Sala de Imprensa", to: "/imprensa" },
   { label: "Contato", to: "/contato" },
-
 ];
 
 const legal = [
   { label: "Política de Privacidade", to: "/privacidade" },
   { label: "Termos de Uso", to: "/termos-de-uso" },
-  { label: "Canal de Denúncias", to: "/canal-de-denuncias" },
+  { label: "Canal de Denúncia", to: "/canal-de-denuncias" },
 ];
 
 const socialLinks = [
