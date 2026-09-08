@@ -1,8 +1,12 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, CalendarCheck2, FolderKanban, History, MapPinned, Users } from "lucide-react";
+import { ArrowRight, CalendarCheck2, FileText, FolderKanban, History, MapPinned, Users } from "lucide-react";
+import { useMemo, useState } from "react";
 import { CompactFinalCTA } from "@/components/CompactFinalCTA";
 import { HeroButton, PageHero, Section, SectionTitle } from "@/components/PageHero";
-import { ArcThick, HatchedCircle, Triangle } from "@/components/Shapes";
+import { ArcThick, HatchedCircle } from "@/components/Shapes";
+import { evidences, evidenceTypes } from "@/data/evidencias";
+import { projects } from "@/data/site";
+
 
 export const Route = createFileRoute("/impacto-memoria")({ head:()=>({meta:[
  {title:"Impacto & Memória | Associação Maggu"},{name:"description",content:"Conheça marcos, memórias e evidências da trajetória da Associação Maggu."},{property:"og:title",content:"Impacto & Memória | Associação Maggu"},{property:"og:description",content:"Resultados e histórias da Associação Maggu caminham juntos."},{property:"og:type",content:"website"},{name:"twitter:card",content:"summary_large_image"},
