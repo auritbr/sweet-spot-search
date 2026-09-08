@@ -125,8 +125,8 @@ function Transparencia() {
                     </span>
                     <span className="min-w-0 flex-1">
                       <span className="block text-brand-ink" style={{ fontSize: "clamp(1rem, 1.2vw, 1.15rem)", fontWeight: 600 }}>{area.title}</span>
-                      <span className="mt-0.5 block text-xs text-brand-gray">{area.summary}</span>
                     </span>
+
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" className="shrink-0 text-brand-ink transition-transform" style={{ transform: isOpen ? "rotate(180deg)" : "none" }} aria-hidden="true"><path d="M6 9l6 6 6-6" /></svg>
                   </button>
                   <div className="grid transition-all" style={{ gridTemplateRows: isOpen ? "1fr" : "0fr" }}>
