@@ -1,6 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useMemo } from "react";
-import { FileText } from "lucide-react";
+import { useMemo, useState } from "react";
 import { ArcThick, HatchedCircle, QuarterCircle, Triangle } from "@/components/Shapes";
 import { documents } from "@/data/site";
 import { CompactFinalCTA } from "@/components/CompactFinalCTA";
@@ -24,44 +23,6 @@ export const Route = createFileRoute("/transparencia/")({
 
 const EMPTY = "Nenhum documento publicado nesta categoria neste momento.";
 
-function EmptyState() {
-  return (
-    <div className="flex items-center gap-3 rounded-xl border border-brand-petrol/10 bg-brand-soft/50 px-5 py-4">
-      <FileText className="size-4 shrink-0 text-brand-petrol/60" aria-hidden="true" />
-      <p className="text-sm leading-relaxed text-brand-gray">{EMPTY}</p>
-    </div>
-  );
-}
-
-function DocumentList({ category }: { category: "Documentos" | "Relatórios" | "Integridade" }) {
-  const docs = useMemo(() => documents.filter((d) => d.category === category), [category]);
-  if (docs.length === 0) return <EmptyState />;
-  return (
-    <ul className="grid gap-3 sm:grid-cols-2">
-      {docs.map((d) => (
-        <li key={d.name} className="flex items-center gap-3 rounded-xl border border-brand-petrol/10 bg-white px-4 py-3">
-          <span className="flex size-9 shrink-0 items-center justify-center rounded-lg bg-brand-soft text-[10px] font-bold text-brand-ink">{d.format}</span>
-          <div className="min-w-0 flex-1">
-            <p className="truncate text-sm font-semibold text-brand-ink">{d.name}</p>
-            <p className="mt-0.5 text-xs text-brand-gray">{d.year} · {d.format}</p>
-          </div>
-          <a href={d.url} target="_blank" rel="noopener noreferrer" className="shrink-0 rounded-full border border-brand-petrol/20 px-3 py-1.5 text-xs font-semibold text-brand-petrol hover:bg-brand-soft">Acessar</a>
-        </li>
-      ))}
-    </ul>
-  );
-}
-
-function Block({ eyebrow, title, children }: { eyebrow: string; title: string; children: React.ReactNode }) {
-  return (
-    <section className="rounded-2xl border border-brand-petrol/10 bg-white p-6 md:p-7">
-      <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-brand-red">{eyebrow}</p>
-      <h2 className="mt-2 text-[1.25rem] font-bold leading-snug text-brand-ink md:text-[1.4rem]">{title}</h2>
-      <div className="mt-4">{children}</div>
-    </section>
-  );
-}
-
 const institutional = [
   ["Razão social", "Associação Sócio Cultural Maggu"],
   ["CNPJ", "61.841.454/0001-80"],
@@ -70,7 +31,151 @@ const institutional = [
   ["Telefone", "(82) 99806-7374"],
 ] as const;
 
+const primaryBtn = "inline-flex rounded-full bg-brand-petrol px-5 py-2 text-sm font-bold text-primary-foreground transition hover:bg-brand-red";
+const ghostBtn = "inline-flex rounded-full border border-brand-petrol/25 px-5 py-2 text-sm font-bold text-brand-petrol transition hover:bg-brand-soft";
+
+function DocumentList({ category, color }: { category: string; color: string }) {
+  const docs = useMemo(() => documents.filter((d) => d.category === category), [category]);
+  if (docs.length === 0) {
+    return (
+      <p className="border-t border-black/5 py-4 text-sm text-brand-gray">{EMPTY}</p>
+    );
+  }
+  return (
+    <ul className="divide-y divide-black/5">
+      {docs.map((d) => (
+        <li key={d.name} className="flex flex-wrap items-center gap-3 py-4 md:flex-nowrap">
+          <span className="flex size-9 shrink-0 items-center justify-center rounded-lg bg-brand-soft text-[10px] font-bold text-brand-ink">{d.format}</span>
+          <div className="min-w-0 flex-1">
+            <p className="text-sm font-semibold text-brand-ink">{d.name}</p>
+            <p className="mt-0.5 text-xs text-brand-gray">{d.year} · {d.format}</p>
+          </div>
+          <div className="flex shrink-0 gap-2">
+            <a href={d.url} target="_blank" rel="noopener noreferrer" className="rounded-full border border-brand-ink/20 px-3 py-2 text-xs font-semibold text-brand-ink hover:bg-brand-soft">Visualizar</a>
+            <a href={d.url} download className="rounded-full px-3 py-2 text-xs font-semibold text-white hover:opacity-90" style={{ backgroundColor: color }}>Baixar</a>
+          </div>
+        </li>
+      ))}
+    </ul>
+  );
+}
+
+function docSummary(category: string) {
+  const total = documents.filter((d) => d.category === category).length;
+  return total === 0 ? "Nenhum documento publicado" : `${total} documento${total > 1 ? "s" : ""}`;
+}
+
+type Area = { title: string; summary: string; color: string; body: React.ReactNode };
+
 function Transparencia() {
+  const areas: Area[] = [
+    {
+      title: "Dados Institucionais",
+      summary: "Identificação da Associação",
+      color: "#00384C",
+      body: (
+        <dl className="divide-y divide-black/5 text-sm">
+          {institutional.map(([label, value]) => (
+            <div key={label} className="flex flex-wrap gap-x-3 gap-y-0.5 py-3">
+              <dt className="min-w-[9.5rem] text-brand-gray">{label}</dt>
+              <dd className="font-semibold text-brand-ink">{value}</dd>
+            </div>
+          ))}
+        </dl>
+      ),
+    },
+    {
+      title: "Governança",
+      summary: "Estrutura e responsabilidades",
+      color: "#08B9E6",
+      body: (
+        <div className="pb-2 pt-1">
+          <p className="text-sm leading-relaxed text-brand-gray">A Associação organiza sua gestão por meio da Assembleia Geral, da Diretoria e do Conselho Fiscal, com responsabilidades definidas em estatuto.</p>
+          <div className="mt-4 flex flex-wrap gap-3">
+            <Link to="/transparencia/governanca-integridade" className={primaryBtn}>Governança e Integridade</Link>
+            <Link to="/equipe" className={ghostBtn}>Conheça a equipe</Link>
+          </div>
+        </div>
+      ),
+    },
+    {
+      title: "Documentos",
+      summary: docSummary("Documentos"),
+      color: "#FFB400",
+      body: (
+        <div className="pb-2">
+          <p className="pb-1 text-sm leading-relaxed text-brand-gray">Estatuto, atas, certidões e demais documentos institucionais, publicados conforme validação.</p>
+          <DocumentList category="Documentos" color="#FFB400" />
+        </div>
+      ),
+    },
+    {
+      title: "Relatórios",
+      summary: docSummary("Relatórios"),
+      color: "#ED1C24",
+      body: (
+        <div className="pb-2">
+          <p className="pb-1 text-sm leading-relaxed text-brand-gray">Relatórios institucionais publicados após validação.</p>
+          <DocumentList category="Relatórios" color="#ED1C24" />
+        </div>
+      ),
+    },
+    {
+      title: "Integridade",
+      summary: docSummary("Integridade"),
+      color: "#FF7A00",
+      body: (
+        <div className="pb-2">
+          <p className="pb-1 text-sm leading-relaxed text-brand-gray">Orientações e canais para o encaminhamento responsável de situações relacionadas à integridade institucional.</p>
+          <div className="flex flex-wrap gap-3 pb-3 pt-2">
+            <Link to="/canal-de-denuncias" className={primaryBtn}>Canal de Denúncia</Link>
+            <Link to="/transparencia/governanca-integridade" className={ghostBtn}>Governança e Integridade</Link>
+          </div>
+          <DocumentList category="Integridade" color="#FF7A00" />
+        </div>
+      ),
+    },
+    {
+      title: "ODS / Maggu 2030",
+      summary: "Compromissos de sustentabilidade",
+      color: "#B8DC4B",
+      body: (
+        <div className="pb-2 pt-1">
+          <p className="text-sm leading-relaxed text-brand-gray">Compromissos institucionais, governança e indicadores ligados aos Objetivos de Desenvolvimento Sustentável.</p>
+          <Link to="/ods-maggu-2030" className={`mt-4 ${primaryBtn}`}>Acessar subárea</Link>
+        </div>
+      ),
+    },
+    {
+      title: "Privacidade",
+      summary: "Proteção de dados pessoais",
+      color: "#00384C",
+      body: (
+        <div className="pb-2 pt-1">
+          <p className="text-sm leading-relaxed text-brand-gray">Orientações sobre o tratamento de dados pessoais e sobre o uso dos canais digitais da Associação.</p>
+          <div className="mt-4 flex flex-wrap gap-3">
+            <Link to="/privacidade" className={primaryBtn}>Política de Privacidade</Link>
+            <Link to="/termos-de-uso" className={ghostBtn}>Termos de Uso</Link>
+          </div>
+        </div>
+      ),
+    },
+    {
+      title: "Cadastros e Redes",
+      summary: "Reconhecimentos validados",
+      color: "#08B9E6",
+      body: (
+        <ul className="space-y-2 py-1 text-sm leading-relaxed text-brand-gray">
+          <li><strong className="font-semibold text-brand-ink">Ponto de Cultura</strong> — Teatro Escola Maggu certificado em 2025.</li>
+          <li><strong className="font-semibold text-brand-ink">Cadastro Alagoano do Esporte (CAE)</strong> — inscrição da Associação Maggu.</li>
+        </ul>
+      ),
+    },
+  ];
+
+  const [open, setOpen] = useState<Record<string, boolean>>(() => ({ [areas[0]!.title]: true }));
+  const toggle = (t: string) => setOpen((v) => ({ ...v, [t]: !v[t] }));
+
   return (
     <>
       <PageHero title="Transparência" eyebrow="Institucional" subtitle="Acesse documentos, relatórios, atas, certidões, políticas e demais informações institucionais da Associação Sócio Cultural Maggu." image="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=1920&q=80" accent="gold" brush="#08B9E6" compact decoration="curve" />
@@ -93,65 +198,30 @@ function Transparencia() {
       <section id="acervo" className="relative overflow-hidden bg-white pb-14 md:pb-20">
         <ArcThick color="#00384C" className="pointer-events-none absolute -left-10 top-6 w-20 opacity-30 md:left-4 md:w-24" from={210} to={330} />
         <Triangle color="#FFB400" size={26} className="pointer-events-none absolute right-6 top-4 hidden opacity-70 md:block" rotate={14} />
-        <div className="container-x">
-          <div className="mx-auto grid max-w-5xl gap-4 md:grid-cols-2">
-            <Block eyebrow="Dados institucionais" title="Identificação da Associação">
-              <dl className="divide-y divide-brand-petrol/10 text-sm">
-                {institutional.map(([label, value]) => (
-                  <div key={label} className="flex flex-wrap gap-x-3 gap-y-0.5 py-2">
-                    <dt className="min-w-[9.5rem] text-brand-gray">{label}</dt>
-                    <dd className="font-semibold text-brand-ink">{value}</dd>
+        <div className="container-x max-w-4xl">
+          <div className="space-y-3">
+            {areas.map((area, i) => {
+              const isOpen = !!open[area.title];
+              return (
+                <div key={area.title} className={`overflow-hidden rounded-2xl border border-black/5 ${i % 2 === 0 ? "bg-white" : "bg-brand-soft/50"}`}>
+                  <button type="button" onClick={() => toggle(area.title)} aria-expanded={isOpen} className="flex w-full items-center gap-4 px-4 py-4 text-left transition hover:bg-brand-soft/60 md:px-5">
+                    <span className="flex size-10 shrink-0 items-center justify-center rounded-xl text-white" style={{ backgroundColor: area.color }}>
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z" /><path d="M14 3v6h6" /></svg>
+                    </span>
+                    <span className="min-w-0 flex-1">
+                      <span className="block text-brand-ink" style={{ fontSize: "clamp(1rem, 1.2vw, 1.15rem)", fontWeight: 600 }}>{area.title}</span>
+                      <span className="mt-0.5 block text-xs text-brand-gray">{area.summary}</span>
+                    </span>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" className="shrink-0 text-brand-ink transition-transform" style={{ transform: isOpen ? "rotate(180deg)" : "none" }} aria-hidden="true"><path d="M6 9l6 6 6-6" /></svg>
+                  </button>
+                  <div className="grid transition-all" style={{ gridTemplateRows: isOpen ? "1fr" : "0fr" }}>
+                    <div className="overflow-hidden">
+                      <div className="px-4 pb-2 md:px-5">{area.body}</div>
+                    </div>
                   </div>
-                ))}
-              </dl>
-            </Block>
-
-            <Block eyebrow="Governança" title="Estrutura e responsabilidades">
-              <p className="text-sm leading-relaxed text-brand-gray">A Associação organiza sua gestão por meio da Assembleia Geral, da Diretoria e do Conselho Fiscal, com responsabilidades definidas em estatuto.</p>
-              <div className="mt-4 flex flex-wrap gap-3">
-                <Link to="/transparencia/governanca-integridade" className="inline-flex rounded-full bg-brand-petrol px-5 py-2 text-sm font-bold text-primary-foreground transition hover:bg-brand-red">Governança e Integridade</Link>
-                <Link to="/equipe" className="inline-flex rounded-full border border-brand-petrol/25 px-5 py-2 text-sm font-bold text-brand-petrol transition hover:bg-brand-soft">Conheça a equipe</Link>
-              </div>
-            </Block>
-
-            <Block eyebrow="Documentos" title="Documentação institucional">
-              <p className="mb-4 text-sm leading-relaxed text-brand-gray">Estatuto, atas, certidões e demais documentos institucionais, publicados conforme validação.</p>
-              <DocumentList category="Documentos" />
-            </Block>
-
-            <Block eyebrow="Relatórios" title="Relatórios institucionais">
-              <p className="mb-4 text-sm leading-relaxed text-brand-gray">Relatórios publicados após validação institucional.</p>
-              <DocumentList category="Relatórios" />
-            </Block>
-
-            <Block eyebrow="Integridade" title="Integridade e conduta">
-              <p className="text-sm leading-relaxed text-brand-gray">Orientações e canais para o encaminhamento responsável de situações relacionadas à integridade institucional.</p>
-              <div className="mt-4 flex flex-wrap gap-3">
-                <Link to="/canal-de-denuncias" className="inline-flex rounded-full bg-brand-petrol px-5 py-2 text-sm font-bold text-primary-foreground transition hover:bg-brand-red">Canal de Denúncia</Link>
-                <Link to="/transparencia/governanca-integridade" className="inline-flex rounded-full border border-brand-petrol/25 px-5 py-2 text-sm font-bold text-brand-petrol transition hover:bg-brand-soft">Governança e Integridade</Link>
-              </div>
-              <div className="mt-4"><DocumentList category="Integridade" /></div>
-            </Block>
-
-            <Block eyebrow="ODS / Maggu 2030" title="Compromissos de sustentabilidade">
-              <p className="text-sm leading-relaxed text-brand-gray">Compromissos institucionais, governança e indicadores ligados aos Objetivos de Desenvolvimento Sustentável.</p>
-              <Link to="/ods-maggu-2030" className="mt-4 inline-flex rounded-full bg-brand-petrol px-5 py-2 text-sm font-bold text-primary-foreground transition hover:bg-brand-red">Acessar subárea</Link>
-            </Block>
-
-            <Block eyebrow="Privacidade" title="Privacidade e proteção de dados">
-              <p className="text-sm leading-relaxed text-brand-gray">Orientações sobre o tratamento de dados pessoais e sobre o uso dos canais digitais da Associação.</p>
-              <div className="mt-4 flex flex-wrap gap-3">
-                <Link to="/privacidade" className="inline-flex rounded-full bg-brand-petrol px-5 py-2 text-sm font-bold text-primary-foreground transition hover:bg-brand-red">Política de Privacidade</Link>
-                <Link to="/termos-de-uso" className="inline-flex rounded-full border border-brand-petrol/25 px-5 py-2 text-sm font-bold text-brand-petrol transition hover:bg-brand-soft">Termos de Uso</Link>
-              </div>
-            </Block>
-
-            <Block eyebrow="Cadastros e redes" title="Reconhecimentos validados">
-              <ul className="space-y-2 text-sm leading-relaxed text-brand-gray">
-                <li><strong className="font-semibold text-brand-ink">Ponto de Cultura</strong> — Teatro Escola Maggu certificado em 2025.</li>
-                <li><strong className="font-semibold text-brand-ink">Cadastro Alagoano do Esporte (CAE)</strong> — inscrição da Associação Maggu.</li>
-              </ul>
-            </Block>
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>
