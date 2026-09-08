@@ -249,6 +249,7 @@ function OdsMaggu2030() {
         <span className="pointer-events-none absolute left-6 top-12 hidden h-10 w-10 border-l border-t border-brand-gold/40 md:block" aria-hidden="true" />
         <div className="container-x">
           <SectionTitle align="center" eyebrow="Publicidade" title="Documentos e evidências" text="Materiais que sustentam os compromissos assumidos e permitem acompanhamento público." />
+          {odsEvidence.length > 0 ? (
           <ul className="mx-auto max-w-3xl space-y-3">
             {odsEvidence.map((doc, i) => {
               const color = evidenceColors[i % evidenceColors.length];
@@ -271,6 +272,11 @@ function OdsMaggu2030() {
               );
             })}
           </ul>
+          ) : (
+            <p className="mx-auto max-w-3xl rounded-[16px] border border-dashed border-brand-petrol/18 bg-white/70 px-5 py-5 text-center text-sm text-brand-gray">
+              Nenhum documento ou evidência publicado nesta área neste momento.
+            </p>
+          )}
         </div>
       </Section>
 
