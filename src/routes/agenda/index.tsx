@@ -30,6 +30,8 @@ export const Route = createFileRoute("/agenda/")({
     ],
     links: [{ rel: "canonical", href: "/agenda" }],
   }),
+  validateSearch: (search: Record<string, unknown>): { categoria?: string } =>
+    typeof search.categoria === "string" ? { categoria: search.categoria } : {},
   component: Agenda,
 });
 
@@ -101,7 +103,10 @@ function CalendarEvent({ event }: { event: AgendaEvent }) {
 }
 
 function Agenda() {
-  const [category, setCategory] = useState<"Todos" | AgendaCategory>("Todos");
+  const { categoria } = Route.useSearch();
+  const [category, setCategory] = useState<"Todos" | AgendaCategory>(() =>
+    categoria && (agendaCategories as readonly string[]).includes(categoria) ? (categoria as AgendaCategory) : "Todos",
+  );
   const [view, setView] = useState<CalendarView>("semana");
   const [cursor, setCursor] = useState(() => atStartOfDay(new Date()));
 

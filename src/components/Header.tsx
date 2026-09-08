@@ -45,7 +45,7 @@ const nav: NavItem[] = [
       { label: "Transparência", to: "/transparencia" },
       { label: "Governança e Integridade", to: "/transparencia/governanca-integridade" },
       { label: "ODS / Maggu 2030", to: "/ods-maggu-2030" },
-      { label: "Canal de Denúncias", to: "/canal-de-denuncias" },
+      { label: "Canal de Denúncia", to: "/canal-de-denuncias" },
       { label: "Política de Privacidade", to: "/privacidade" },
       { label: "Termos de Uso", to: "/termos-de-uso" },
     ],
