@@ -2,25 +2,24 @@
 //
 // PENDÊNCIAS INSTITUCIONAIS (não implementadas e não anunciadas ao público):
 // responsáveis pelo recebimento; triagem; critérios de encaminhamento; conflitos de
-// interesse; confidencialidade; guarda e descarte de dados; regras de acesso; prazos
-// internos; possibilidade ou não de anonimato; eventual proteção contra retaliação;
-// integração com Código de Ética e com a política de Privacidade.
-// Enquanto o fluxo não for aprovado, o formulário permanece desativado (canalDenunciasAtivo = false),
-// sem endpoint e sem envio de dados.
+// interesse; regras formais de confidencialidade; guarda e descarte de dados; regras de
+// acesso; prazos internos; possibilidade ou não de anonimato; eventual proteção contra
+// retaliação; integração com Código de Ética e com a política de Privacidade.
+// Enquanto o fluxo não for aprovado, o canal não recebe relatos: sem endpoint, sem
+// formulário, sem e-mail substitutivo e sem envio de dados.
 import { createFileRoute, Link } from "@tanstack/react-router";
 import {
   AlertTriangle,
   ArrowRight,
   Ban,
   Coins,
-  Mail,
+  Lock,
   MessageSquareWarning,
   Scale,
   ScrollText,
   Shield,
-  ShieldCheck,
-  Users,
   UserX,
+  Users,
 } from "lucide-react";
 import { PageHero } from "@/components/PageHero";
 import { CompactFinalCTA } from "@/components/CompactFinalCTA";
@@ -41,11 +40,6 @@ export const Route = createFileRoute("/canal-de-denuncias")({
   component: CanalDenuncias,
 });
 
-/** Flag de configuração: só ativar após aprovação formal do fluxo operacional. */
-const canalDenunciasAtivo = false;
-
-const EMAIL = "comunicacaomktmaggu@gmail.com";
-
 const relatos = [
   { icon: MessageSquareWarning, accent: "#ED1C24", title: "Assédio e condutas inadequadas", text: "Situações de assédio, constrangimento, intimidação ou comportamento incompatível com um ambiente respeitoso." },
   { icon: UserX, accent: "#FFB400", title: "Discriminação", text: "Relatos envolvendo tratamento discriminatório ou desrespeito relacionado a características pessoais ou sociais." },
@@ -55,18 +49,11 @@ const relatos = [
   { icon: AlertTriangle, accent: "#FFB400", title: "Outras situações", text: "Outros fatos que possam comprometer a ética, a integridade ou a confiança nas atividades da Associação." },
 ];
 
-const etapas = [
-  { n: "01", title: "Relato", text: "A pessoa encaminha as informações disponíveis sobre a situação." },
-  { n: "02", title: "Recebimento", text: "O relato é recebido e registrado para análise." },
-  { n: "03", title: "Avaliação", text: "As informações são avaliadas com responsabilidade e respeito às pessoas envolvidas." },
-  { n: "04", title: "Encaminhamento", text: "Quando necessário, são adotadas providências compatíveis com a situação relatada." },
-];
-
 const principios = [
-  { icon: Shield, title: "Respeito", text: "As pessoas envolvidas devem ser tratadas com dignidade durante todo o processo." },
-  { icon: ShieldCheck, title: "Confidencialidade", text: "As informações serão tratadas com cuidado e acesso limitado conforme a necessidade." },
-  { icon: Scale, title: "Imparcialidade", text: "Os relatos serão analisados sem julgamentos antecipados." },
+  { icon: Shield, title: "Respeito", text: "O tratamento de situações relacionadas à integridade deve preservar a dignidade das pessoas envolvidas." },
+  { icon: Scale, title: "Imparcialidade", text: "A análise de situações relacionadas à integridade deve ocorrer sem julgamentos antecipados." },
   { icon: Ban, title: "Responsabilidade", text: "O canal deve ser utilizado de boa-fé e com informações verdadeiras." },
+  { icon: Lock, title: "Proteção das informações", text: "Os procedimentos de acesso, tratamento, armazenamento e proteção das informações serão definidos antes da ativação do recebimento eletrônico de relatos." },
 ];
 
 function Eyebrow({ children, color = "#08B9E6" }: { children: string; color?: string }) {
@@ -134,37 +121,31 @@ function CanalDenuncias() {
         </div>
       </section>
 
-      {/* Como funciona */}
-      <section className="relative overflow-hidden bg-white py-12 md:py-16" aria-labelledby="como-funciona">
+      {/* Estruturação do canal */}
+      <section className="relative overflow-hidden bg-white py-12 md:py-16" aria-labelledby="estruturacao-canal">
         <span className="pointer-events-none absolute -left-14 bottom-4 hidden size-40 rounded-full border border-brand-red/15 md:block" aria-hidden="true" />
-        <div className="container-x relative max-w-5xl">
-          <div className="text-center">
-            <Eyebrow color="#FFB400">Como funciona</Eyebrow>
-            <h2 id="como-funciona" className="mt-3 text-brand-ink" style={{ fontSize: "clamp(1.35rem, 2vw, 1.8rem)", lineHeight: 1.25, fontWeight: 700 }}>
-              Do relato à análise
+        <div className="container-x relative max-w-3xl">
+          <div className="rounded-[18px] border border-brand-petrol/10 bg-brand-soft/45 p-6 backdrop-blur-md md:p-8">
+            <Eyebrow color="#FFB400">Estruturação do canal</Eyebrow>
+            <h2 id="estruturacao-canal" className="mt-3 text-brand-ink" style={{ fontSize: "clamp(1.25rem, 1.9vw, 1.6rem)", lineHeight: 1.3, fontWeight: 700 }}>
+              Um fluxo responsável precisa ser definido antes do recebimento de relatos.
             </h2>
+            <div className="mt-4 space-y-3 text-brand-gray" style={{ lineHeight: 1.75 }}>
+              <p>A Associação Maggu está estruturando os procedimentos necessários para o funcionamento do Canal de Denúncia e Relato Ético, incluindo responsabilidades, acesso às informações, tratamento de dados, encaminhamento e guarda dos relatos.</p>
+              <p>O envio eletrônico será disponibilizado após a aprovação institucional e a implementação das medidas necessárias para seu funcionamento responsável.</p>
+            </div>
           </div>
-          <ol className="relative mt-9 grid gap-6 md:grid-cols-4 md:gap-5">
-            <span className="pointer-events-none absolute left-0 right-0 top-4 hidden h-px bg-brand-petrol/12 md:block" aria-hidden="true" />
-            {etapas.map(({ n, title, text }) => (
-              <li key={n} className="relative pl-10 md:pl-0">
-                <span className="absolute left-0 top-0 flex size-8 items-center justify-center rounded-full border border-brand-cyan/35 bg-white text-[11px] font-semibold text-brand-petrol md:static md:mb-3 md:flex" aria-hidden="true">{n}</span>
-                <h3 className="text-brand-ink md:mt-0" style={{ fontSize: "1rem", fontWeight: 700 }}>{title}</h3>
-                <p className="mt-1.5 text-[13.5px] text-brand-gray" style={{ lineHeight: 1.65 }}>{text}</p>
-              </li>
-            ))}
-          </ol>
         </div>
       </section>
 
-      {/* Princípios */}
+      {/* Compromissos */}
       <section className="relative overflow-hidden bg-brand-petrol/[0.04] py-12 md:py-16" aria-labelledby="principios-canal">
         <span className="pointer-events-none absolute -right-16 top-10 hidden size-40 rounded-full border-[16px] border-brand-gold/10 md:block" aria-hidden="true" />
         <div className="container-x relative max-w-5xl">
           <div className="text-center">
             <Eyebrow color="#00384C">Compromissos</Eyebrow>
             <h2 id="principios-canal" className="mt-3 text-brand-ink" style={{ fontSize: "clamp(1.35rem, 2vw, 1.8rem)", lineHeight: 1.25, fontWeight: 700 }}>
-              Como os relatos devem ser tratados
+              Princípios que orientam a estruturação do canal
             </h2>
           </div>
           <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
@@ -194,34 +175,16 @@ function CanalDenuncias() {
         </div>
       </section>
 
-      {/* Encaminhamento e canal de integridade */}
-      <section className="relative overflow-hidden bg-white py-12 md:py-16" aria-labelledby="envie-relato">
+      {/* Canal digital */}
+      <section className="relative overflow-hidden bg-white py-12 md:py-16" aria-labelledby="canal-digital">
         <div className="container-x relative max-w-3xl">
-          <h2 id="envie-relato" className="text-brand-ink" style={{ fontSize: "clamp(1.25rem, 1.9vw, 1.65rem)", lineHeight: 1.3, fontWeight: 700 }}>
-            Envie seu relato
+          <Eyebrow>Canal digital</Eyebrow>
+          <h2 id="canal-digital" className="mt-3 text-brand-ink" style={{ fontSize: "clamp(1.2rem, 1.8vw, 1.55rem)", lineHeight: 1.3, fontWeight: 700 }}>
+            O envio de relatos será disponibilizado após a conclusão da estruturação operacional.
           </h2>
-          <p className="mt-3 text-brand-gray" style={{ lineHeight: 1.75 }}>
-            Forneça as informações que considerar necessárias para que a situação possa ser compreendida e analisada.
-          </p>
-
-          {!canalDenunciasAtivo && (
-            <p className="mt-3 text-[13.5px] text-brand-gray" style={{ lineHeight: 1.7 }}>
-              O formulário eletrônico será disponibilizado após a definição e a aprovação do fluxo operacional, das responsabilidades, das regras de confidencialidade e das medidas de proteção de dados. Até lá, os relatos podem ser encaminhados pelo canal institucional abaixo.
-            </p>
-          )}
-
-          <div className="mt-6 flex flex-col gap-4 rounded-[18px] border border-brand-petrol/10 bg-brand-soft/45 p-5 backdrop-blur-md sm:flex-row sm:items-center sm:justify-between">
-            <div className="min-w-0">
-              <p className="text-[13px] font-semibold uppercase tracking-[0.14em] text-brand-petrol">Canal de Integridade</p>
-              <p className="mt-1 truncate text-brand-ink" style={{ fontWeight: 600 }}>{EMAIL}</p>
-            </div>
-            <a
-              href={`mailto:${EMAIL}`}
-              className="inline-flex shrink-0 items-center gap-2 whitespace-nowrap rounded-full border border-brand-petrol/15 bg-brand-petrol px-5 py-2.5 text-[14px] font-semibold text-white shadow-sm transition hover:bg-brand-petrol/90"
-            >
-              <Mail className="size-4" aria-hidden="true" />
-              Enviar e-mail
-            </a>
+          <div className="mt-4 space-y-3 text-brand-gray" style={{ lineHeight: 1.75 }}>
+            <p>A Associação está definindo as responsabilidades, os procedimentos de acesso, o tratamento das informações e as medidas de proteção de dados necessárias para o funcionamento do canal.</p>
+            <p>Assim que esse fluxo estiver institucionalmente aprovado e tecnicamente implementado, esta área será atualizada com as orientações para envio.</p>
           </div>
         </div>
       </section>
@@ -235,7 +198,7 @@ function CanalDenuncias() {
             Proteção das informações também faz parte do processo.
           </h2>
           <p className="mt-3 text-brand-gray" style={{ lineHeight: 1.75 }}>
-            Os dados pessoais eventualmente tratados por meio deste canal seguem as regras e os princípios previstos na Política de Privacidade e Proteção de Dados Pessoais da Associação Maggu.
+            A estruturação do Canal de Denúncia e Relato Ético considera os princípios e as regras previstos na Política de Privacidade e Proteção de Dados Pessoais da Associação Maggu. Antes da ativação do recebimento eletrônico, serão definidos os procedimentos específicos aplicáveis ao tratamento das informações encaminhadas pelo canal.
           </p>
           <Link to="/privacidade" className="mt-4 inline-flex items-center gap-2 text-[14px] font-semibold text-brand-petrol hover:text-brand-red">
             Conheça a Política de Privacidade
@@ -246,7 +209,7 @@ function CanalDenuncias() {
 
       <CompactFinalCTA
         title="Integridade também se constrói com diálogo e responsabilidade."
-        text="Conheça nossos canais institucionais ou fale com a Associação Maggu."
+        text="Conheça nossos canais institucionais ou saiba mais sobre as práticas de transparência da Associação Maggu."
         primary={{ label: "Ver Transparência", to: "/transparencia" }}
         secondary={{ label: "Entre em contato", to: "/contato" }}
         variant="privacy"
