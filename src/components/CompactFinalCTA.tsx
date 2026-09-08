@@ -133,11 +133,12 @@ export function CompactFinalCTA({ title, text, primary, secondary, tertiary, var
             <span className="mx-auto mb-4 block size-3 rotate-45 border border-brand-gold/75 bg-brand-gold/15" aria-hidden="true" />
             <h2 className={`mx-auto text-[1.45rem] font-bold leading-tight text-primary-foreground md:text-[1.9rem] ${isLegal ? "max-w-[17rem] sm:max-w-2xl" : ""}`}>{title}</h2>
             <p className="mx-auto mt-3 max-w-xl text-[0.85rem] leading-relaxed text-primary-foreground/80 md:text-[0.95rem]">{text}</p>
-            <div className="mt-6 flex flex-col items-center justify-center gap-2.5 sm:flex-row">
+            <div className="mt-6 flex flex-col items-center justify-center gap-2.5 sm:flex-row sm:flex-wrap">
               <CtaButton item={primary} className={styles[0]} />
               <CtaButton item={secondary} className={styles[1]} />
               {tertiary && <CtaButton item={tertiary} className={styles[1]} />}
             </div>
+
 
           </div>
         </div>

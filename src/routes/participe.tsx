@@ -80,7 +80,11 @@ function Participe() {
             <p>Apoiar a Associação Maggu é contribuir para que ações de cultura, educação, leitura, cinema, esporte, memória e sustentabilidade continuem alcançando pessoas e território.</p>
             <p>O apoio pode acontecer por meio de contribuição financeira, doação de materiais ou equipamentos, livros, prestação de serviços, parceria institucional ou patrocínio, conforme cada iniciativa.</p>
           </div>
+          <Button asChild size="sm" className="mt-6 rounded-full bg-brand-petrol px-5 text-primary-foreground hover:bg-brand-red">
+            <a href="/contato?assunto=Apoio a uma iniciativa">Fale conosco para apoiar uma iniciativa</a>
+          </Button>
         </div>
+
         <ul className="grid auto-rows-fr grid-cols-2 gap-3">
           {support.map(({ label, icon: Icon, accent, iconColor }, i) => <li key={label} className="group relative flex min-h-28 flex-col justify-between overflow-hidden rounded-[12px] border border-brand-petrol/10 bg-background/85 p-4 shadow-[0_12px_26px_-26px_rgba(0,56,76,0.6)] transition hover:-translate-y-0.5 hover:border-brand-cyan/30">
             <span className={`absolute inset-x-0 top-0 h-0.5 ${accent}`} aria-hidden="true" />
@@ -143,6 +147,6 @@ function Participe() {
       </div>
     </Section>
 
-    <CompactFinalCTA title="Toda participação começa por um primeiro encontro." text="Conheça as atividades em andamento, formas de colaboração, apoio e parceria." primary={{ label: "Ver Agenda", to: "/agenda" }} secondary={{ label: "Entre em contato", to: "/contato" }} variant="home" />
+    <CompactFinalCTA title="Toda participação começa por um primeiro encontro." text="Participe de uma atividade, construa uma parceria ou fale com a Associação Maggu." primary={{ label: "Propor parceria", href: "/contato?assunto=Parceria" }} secondary={{ label: "Ver Agenda", to: "/agenda" }} tertiary={{ label: "Entre em contato", to: "/contato" }} variant="home" />
   </>;
 }

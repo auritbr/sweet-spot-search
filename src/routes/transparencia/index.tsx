@@ -31,9 +31,6 @@ const institutional = [
   ["Telefone", "(82) 99806-7374"],
 ] as const;
 
-const primaryBtn = "inline-flex rounded-full bg-brand-petrol px-5 py-2 text-sm font-bold text-primary-foreground transition hover:bg-brand-red";
-const ghostBtn = "inline-flex rounded-full border border-brand-petrol/25 px-5 py-2 text-sm font-bold text-brand-petrol transition hover:bg-brand-soft";
-
 function DocumentList({ category, color }: { category: string; color: string }) {
   const docs = useMemo(() => documents.filter((d) => d.category === category), [category]);
   if (docs.length === 0) {
@@ -60,18 +57,12 @@ function DocumentList({ category, color }: { category: string; color: string }) 
   );
 }
 
-function docSummary(category: string) {
-  const total = documents.filter((d) => d.category === category).length;
-  return total === 0 ? "Nenhum documento publicado" : `${total} documento${total > 1 ? "s" : ""}`;
-}
-
-type Area = { title: string; summary: string; color: string; body: React.ReactNode };
+type Area = { title: string; color: string; body: React.ReactNode };
 
 function Transparencia() {
   const areas: Area[] = [
     {
       title: "Dados Institucionais",
-      summary: "Identificação da Associação",
       color: "#00384C",
       body: (
         <dl className="divide-y divide-black/5 text-sm">
@@ -84,94 +75,15 @@ function Transparencia() {
         </dl>
       ),
     },
-    {
-      title: "Governança",
-      summary: "Estrutura e responsabilidades",
-      color: "#08B9E6",
-      body: (
-        <div className="pb-2 pt-1">
-          <p className="text-sm leading-relaxed text-brand-gray">A Associação organiza sua gestão por meio da Assembleia Geral, da Diretoria e do Conselho Fiscal, com responsabilidades definidas em estatuto.</p>
-          <div className="mt-4 flex flex-wrap gap-3">
-            <Link to="/transparencia/governanca-integridade" className={primaryBtn}>Governança e Integridade</Link>
-            <Link to="/equipe" className={ghostBtn}>Conheça a equipe</Link>
-          </div>
-        </div>
-      ),
-    },
-    {
-      title: "Documentos",
-      summary: docSummary("Documentos"),
-      color: "#FFB400",
-      body: (
-        <div className="pb-2">
-          <p className="pb-1 text-sm leading-relaxed text-brand-gray">Estatuto, atas, certidões e demais documentos institucionais, publicados conforme validação.</p>
-          <DocumentList category="Documentos" color="#FFB400" />
-        </div>
-      ),
-    },
-    {
-      title: "Relatórios",
-      summary: docSummary("Relatórios"),
-      color: "#ED1C24",
-      body: (
-        <div className="pb-2">
-          <p className="pb-1 text-sm leading-relaxed text-brand-gray">Relatórios institucionais publicados após validação.</p>
-          <DocumentList category="Relatórios" color="#ED1C24" />
-        </div>
-      ),
-    },
-    {
-      title: "Integridade",
-      summary: docSummary("Integridade"),
-      color: "#FF7A00",
-      body: (
-        <div className="pb-2">
-          <p className="pb-1 text-sm leading-relaxed text-brand-gray">Orientações e canais para o encaminhamento responsável de situações relacionadas à integridade institucional.</p>
-          <div className="flex flex-wrap gap-3 pb-3 pt-2">
-            <Link to="/canal-de-denuncias" className={primaryBtn}>Canal de Denúncia</Link>
-            <Link to="/transparencia/governanca-integridade" className={ghostBtn}>Governança e Integridade</Link>
-          </div>
-          <DocumentList category="Integridade" color="#FF7A00" />
-        </div>
-      ),
-    },
-    {
-      title: "ODS / Maggu 2030",
-      summary: "Compromissos de sustentabilidade",
-      color: "#B8DC4B",
-      body: (
-        <div className="pb-2 pt-1">
-          <p className="text-sm leading-relaxed text-brand-gray">Compromissos institucionais, governança e indicadores ligados aos Objetivos de Desenvolvimento Sustentável.</p>
-          <Link to="/ods-maggu-2030" className={`mt-4 ${primaryBtn}`}>Acessar subárea</Link>
-        </div>
-      ),
-    },
-    {
-      title: "Privacidade",
-      summary: "Proteção de dados pessoais",
-      color: "#00384C",
-      body: (
-        <div className="pb-2 pt-1">
-          <p className="text-sm leading-relaxed text-brand-gray">Orientações sobre o tratamento de dados pessoais e sobre o uso dos canais digitais da Associação.</p>
-          <div className="mt-4 flex flex-wrap gap-3">
-            <Link to="/privacidade" className={primaryBtn}>Política de Privacidade</Link>
-            <Link to="/termos-de-uso" className={ghostBtn}>Termos de Uso</Link>
-          </div>
-        </div>
-      ),
-    },
-    {
-      title: "Cadastros e Redes",
-      summary: "Reconhecimentos validados",
-      color: "#08B9E6",
-      body: (
-        <ul className="space-y-2 py-1 text-sm leading-relaxed text-brand-gray">
-          <li><strong className="font-semibold text-brand-ink">Ponto de Cultura</strong> — Teatro Escola Maggu certificado em 2025.</li>
-          <li><strong className="font-semibold text-brand-ink">Cadastro Alagoano do Esporte (CAE)</strong> — inscrição da Associação Maggu.</li>
-        </ul>
-      ),
-    },
+    { title: "Governança", color: "#08B9E6", body: <DocumentList category="Governança" color="#08B9E6" /> },
+    { title: "Documentos", color: "#FFB400", body: <DocumentList category="Documentos" color="#FFB400" /> },
+    { title: "Relatórios", color: "#ED1C24", body: <DocumentList category="Relatórios" color="#ED1C24" /> },
+    { title: "Integridade", color: "#FF7A00", body: <DocumentList category="Integridade" color="#FF7A00" /> },
+    { title: "ODS / Maggu 2030", color: "#B8DC4B", body: <DocumentList category="ODS" color="#B8DC4B" /> },
+    { title: "Privacidade", color: "#00384C", body: <DocumentList category="Privacidade" color="#00384C" /> },
+    { title: "Cadastros e Redes", color: "#08B9E6", body: <DocumentList category="Cadastros e Redes" color="#08B9E6" /> },
   ];
+
 
   const [open, setOpen] = useState<Record<string, boolean>>(() => ({ [areas[0]!.title]: true }));
   const toggle = (t: string) => setOpen((v) => ({ ...v, [t]: !v[t] }));
@@ -210,8 +122,8 @@ function Transparencia() {
                     </span>
                     <span className="min-w-0 flex-1">
                       <span className="block text-brand-ink" style={{ fontSize: "clamp(1rem, 1.2vw, 1.15rem)", fontWeight: 600 }}>{area.title}</span>
-                      <span className="mt-0.5 block text-xs text-brand-gray">{area.summary}</span>
                     </span>
+
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" className="shrink-0 text-brand-ink transition-transform" style={{ transform: isOpen ? "rotate(180deg)" : "none" }} aria-hidden="true"><path d="M6 9l6 6 6-6" /></svg>
                   </button>
                   <div className="grid transition-all" style={{ gridTemplateRows: isOpen ? "1fr" : "0fr" }}>

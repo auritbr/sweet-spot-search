@@ -8,9 +8,9 @@ import { team } from "@/data/site";
 export const Route = createFileRoute("/equipe")({
   head: () => ({
     meta: [
-      { title: "Nossa Equipe — Cena Viva" },
-      { name: "description", content: "Conheça as pessoas que constroem o Ponto de Cultura Cena Viva." },
-      { property: "og:title", content: "Nossa Equipe — Cena Viva" },
+      { title: "Nossa Equipe — Associação Maggu" },
+      { name: "description", content: "Conheça as pessoas que constroem o Associação Sócio Cultural Maggu." },
+      { property: "og:title", content: "Nossa Equipe — Associação Maggu" },
       { property: "og:description", content: "As pessoas por trás do nosso trabalho." },
       { property: "og:url", content: "/equipe" },
     ],

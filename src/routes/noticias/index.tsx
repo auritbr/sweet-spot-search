@@ -7,10 +7,10 @@ import { news } from "@/data/site";
 export const Route = createFileRoute("/noticias/")({
   head: () => ({
     meta: [
-      { title: "Notícias — Cena Viva" },
-      { name: "description", content: "Últimas notícias, oficinas, espetáculos e ações culturais do Ponto de Cultura Cena Viva." },
-      { property: "og:title", content: "Notícias — Cena Viva" },
-      { property: "og:description", content: "Últimas notícias do Ponto de Cultura." },
+      { title: "Notícias — Associação Maggu" },
+      { name: "description", content: "Últimas notícias, oficinas, espetáculos e ações culturais do Associação Sócio Cultural Maggu." },
+      { property: "og:title", content: "Notícias — Associação Maggu" },
+      { property: "og:description", content: "Últimas notícias da Associação Sócio Cultural Maggu." },
       { property: "og:url", content: "/noticias" },
     ],
     links: [{ rel: "canonical", href: "/noticias" }],
@@ -56,7 +56,7 @@ function Noticias() {
       <PageHero
         title="Notícias"
         eyebrow="Notícias"
-        subtitle="Acompanhe as ações, encontros e novidades do Ponto de Cultura."
+        subtitle="Acompanhe as ações, encontros e novidades da Associação Maggu."
         image="https://images.unsplash.com/photo-1507676184212-d03ab07a01bf?auto=format&fit=crop&w=1920&q=80"
         accent="gold"
         brush="#08B9E6"

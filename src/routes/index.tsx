@@ -192,7 +192,17 @@ function IntroSection() {
   );
 }
 
+const ecosystemAxes = [
+  ["Arte, Cultura & Formação", "bg-brand-red"],
+  ["Audiovisual & Comunicação", "bg-brand-cyan"],
+  ["Livro, Leitura & Memória", "bg-brand-gold"],
+  ["Infância, Cidadania & Território", "bg-brand-orange"],
+  ["Esporte, Bem-estar & Inclusão", "bg-brand-petrol"],
+  ["Sustentabilidade & Desenvolvimento", "bg-brand-lime"],
+] as const;
+
 function EcosystemSection() {
+
   return (
     <Section className="overflow-hidden bg-brand-soft py-14 md:py-20">
       <div className="container-x grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
@@ -205,19 +215,25 @@ function EcosystemSection() {
           </div>
           <Link to="/ecossistema" className="mt-7 inline-flex rounded-full bg-brand-petrol px-7 py-3 text-sm font-bold text-white transition hover:bg-brand-red">Conheça o Ecossistema</Link>
         </div>
-        <div className="relative mx-auto aspect-square w-full max-w-[430px]" role="img" aria-label="Composição gráfica abstrata representando os seis eixos conectados do Ecossistema Maggu">
-          <svg className="absolute inset-0 h-full w-full" viewBox="0 0 430 430" fill="none" aria-hidden="true">
-            <path d="M80 129C145 48 280 52 346 129M71 226C130 176 300 176 359 226M92 310C174 374 275 366 341 302M120 90L316 332M320 92L104 320" stroke="var(--brand-petrol)" strokeOpacity=".12" strokeWidth="2" />
-            <circle cx="214" cy="214" r="70" stroke="var(--brand-petrol)" strokeOpacity=".1" />
-          </svg>
-          {[
-            ["Arte", "bg-brand-red", "left-[7%] top-[15%]"], ["Audiovisual", "bg-brand-cyan", "right-[3%] top-[20%]"],
-            ["Memória", "bg-brand-gold", "left-[1%] top-[52%]"], ["Infância", "bg-brand-orange", "right-[2%] top-[50%]"],
-            ["Esporte", "bg-brand-petrol", "bottom-[4%] left-[18%]"], ["Sustentabilidade", "bg-brand-lime", "bottom-[8%] right-[9%]"],
-          ].map(([label, color, position]) => <span key={label} className={`absolute inline-flex items-center gap-2 rounded-full border border-brand-petrol/10 bg-background/80 px-3 py-2 text-xs font-semibold text-brand-ink shadow-sm backdrop-blur-sm ${position}`}><span className={`size-2.5 rounded-full ${color}`} aria-hidden="true" />{label}</span>)}
-          <HatchedCircle size={92} color="#08B9E6" className="pointer-events-none absolute left-[38%] top-[38%] opacity-25" />
-          <span className="absolute left-1/2 top-1/2 grid size-20 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full bg-brand-petrol text-center text-[11px] font-bold uppercase tracking-[0.1em] text-primary-foreground shadow-md">Território</span>
+        <div className="mx-auto w-full max-w-[430px] lg:max-w-[470px]">
+          <div className="relative aspect-square w-full" role="img" aria-label="Composição gráfica abstrata representando os seis eixos conectados do Ecossistema Maggu">
+            <svg className="absolute inset-0 h-full w-full" viewBox="0 0 430 430" fill="none" aria-hidden="true">
+              <path d="M80 129C145 48 280 52 346 129M71 226C130 176 300 176 359 226M92 310C174 374 275 366 341 302M120 90L316 332M320 92L104 320" stroke="var(--brand-petrol)" strokeOpacity=".12" strokeWidth="2" />
+              <circle cx="214" cy="214" r="70" stroke="var(--brand-petrol)" strokeOpacity=".1" />
+            </svg>
+            <HatchedCircle size={92} color="#08B9E6" className="pointer-events-none absolute left-[38%] top-[38%] opacity-25" />
+            <span className="absolute left-1/2 top-1/2 grid size-20 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full bg-brand-petrol text-center text-[11px] font-bold uppercase tracking-[0.1em] text-primary-foreground shadow-md">Território</span>
+          </div>
+          <ul className="mt-5 flex flex-wrap justify-center gap-2">
+            {ecosystemAxes.map(([label, color]) => (
+              <li key={label} className="inline-flex items-center gap-2 rounded-full border border-brand-petrol/10 bg-background/85 px-3 py-1.5 text-[11px] font-semibold leading-tight text-brand-ink shadow-sm backdrop-blur-sm sm:text-xs">
+                <span className={`size-2.5 shrink-0 rounded-full ${color}`} aria-hidden="true" />
+                {label}
+              </li>
+            ))}
+          </ul>
         </div>
+
       </div>
     </Section>
   );
