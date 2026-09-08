@@ -192,7 +192,17 @@ function IntroSection() {
   );
 }
 
+const ecosystemAxes = [
+  ["Arte, Cultura & Formação", "bg-brand-red"],
+  ["Audiovisual & Comunicação", "bg-brand-cyan"],
+  ["Livro, Leitura & Memória", "bg-brand-gold"],
+  ["Infância, Cidadania & Território", "bg-brand-orange"],
+  ["Esporte, Bem-estar & Inclusão", "bg-brand-petrol"],
+  ["Sustentabilidade & Desenvolvimento", "bg-brand-lime"],
+] as const;
+
 function EcosystemSection() {
+
   return (
     <Section className="overflow-hidden bg-brand-soft py-14 md:py-20">
       <div className="container-x grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
