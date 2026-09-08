@@ -193,12 +193,12 @@ function IntroSection() {
 }
 
 const ecosystemAxes = [
-  ["Arte, Cultura & Formação", "bg-brand-red"],
-  ["Audiovisual & Comunicação", "bg-brand-cyan"],
-  ["Livro, Leitura & Memória", "bg-brand-gold"],
-  ["Infância, Cidadania & Território", "bg-brand-orange"],
-  ["Esporte, Bem-estar & Inclusão", "bg-brand-petrol"],
-  ["Sustentabilidade & Desenvolvimento", "bg-brand-lime"],
+  { label: "Arte, Cultura & Formação", dot: "bg-brand-red", x: 50, y: 8, w: "w-[46%]" },
+  { label: "Audiovisual & Comunicação", dot: "bg-brand-cyan", x: 84, y: 30, w: "w-[34%]" },
+  { label: "Livro, Leitura & Memória", dot: "bg-brand-gold", x: 84, y: 71, w: "w-[34%]" },
+  { label: "Infância, Cidadania & Território", dot: "bg-brand-orange", x: 50, y: 93, w: "w-[46%]" },
+  { label: "Esporte, Bem-estar & Inclusão", dot: "bg-brand-petrol", x: 16, y: 71, w: "w-[34%]" },
+  { label: "Sustentabilidade & Desenvolvimento", dot: "bg-brand-lime", x: 16, y: 30, w: "w-[34%]" },
 ] as const;
 
 function EcosystemSection() {
@@ -216,23 +216,29 @@ function EcosystemSection() {
           <Link to="/ecossistema" className="mt-7 inline-flex rounded-full bg-brand-petrol px-7 py-3 text-sm font-bold text-white transition hover:bg-brand-red">Conheça o Ecossistema</Link>
         </div>
         <div className="mx-auto w-full max-w-[430px] lg:max-w-[470px]">
-          <div className="relative aspect-square w-full" role="img" aria-label="Composição gráfica abstrata representando os seis eixos conectados do Ecossistema Maggu">
+          <div className="relative aspect-square w-full" role="img" aria-label="Composição gráfica representando os seis eixos do Ecossistema Maggu conectados a um centro comum">
             <svg className="absolute inset-0 h-full w-full" viewBox="0 0 430 430" fill="none" aria-hidden="true">
-              <path d="M80 129C145 48 280 52 346 129M71 226C130 176 300 176 359 226M92 310C174 374 275 366 341 302M120 90L316 332M320 92L104 320" stroke="var(--brand-petrol)" strokeOpacity=".12" strokeWidth="2" />
-              <circle cx="214" cy="214" r="70" stroke="var(--brand-petrol)" strokeOpacity=".1" />
+              <circle cx="215" cy="215" r="150" stroke="var(--brand-petrol)" strokeOpacity=".12" strokeWidth="2" />
+              <circle cx="215" cy="215" r="104" stroke="var(--brand-petrol)" strokeOpacity=".1" strokeDasharray="4 7" />
+              <path d="M215 65V150M344 129L268 180M344 301L268 250M215 365V280M86 301L162 250M86 129L162 180" stroke="var(--brand-petrol)" strokeOpacity=".14" strokeWidth="2" />
             </svg>
-            <HatchedCircle size={92} color="#08B9E6" className="pointer-events-none absolute left-[38%] top-[38%] opacity-25" />
-            <span className="absolute left-1/2 top-1/2 grid size-20 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full bg-brand-petrol text-center text-[11px] font-bold uppercase tracking-[0.1em] text-primary-foreground shadow-md">Território</span>
-          </div>
-          <ul className="mt-5 flex flex-wrap justify-center gap-2">
-            {ecosystemAxes.map(([label, color]) => (
-              <li key={label} className="inline-flex items-center gap-2 rounded-full border border-brand-petrol/10 bg-background/85 px-3 py-1.5 text-[11px] font-semibold leading-tight text-brand-ink shadow-sm backdrop-blur-sm sm:text-xs">
-                <span className={`size-2.5 shrink-0 rounded-full ${color}`} aria-hidden="true" />
-                {label}
-              </li>
+            <HatchedCircle size={92} color="#08B9E6" className="pointer-events-none absolute left-[38%] top-[38%] opacity-20" />
+            <span className="absolute left-1/2 top-1/2 grid size-[26%] -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full bg-brand-petrol px-2 text-center text-[9px] font-bold uppercase leading-tight tracking-[0.08em] text-primary-foreground shadow-md sm:text-[11px]">
+              Ecossistema<br />Maggu
+            </span>
+            {ecosystemAxes.map((axis) => (
+              <span
+                key={axis.label}
+                className={`absolute -translate-x-1/2 -translate-y-1/2 ${axis.w} rounded-2xl border border-brand-petrol/10 bg-background/90 px-2 py-1.5 text-center text-[9px] font-semibold leading-tight text-brand-ink shadow-sm backdrop-blur-sm sm:text-[11px]`}
+                style={{ left: `${axis.x}%`, top: `${axis.y}%` }}
+              >
+                <span className={`mx-auto mb-1 block size-2 rounded-full ${axis.dot}`} aria-hidden="true" />
+                {axis.label}
+              </span>
             ))}
-          </ul>
+          </div>
         </div>
+
 
       </div>
     </Section>
