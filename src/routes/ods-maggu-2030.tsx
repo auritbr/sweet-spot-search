@@ -216,7 +216,7 @@ function OdsMaggu2030() {
       {/* Indicadores */}
       <Section className="overflow-hidden bg-white">
         <div className="container-x">
-          <SectionTitle align="center" eyebrow="Acompanhamento" title="Indicadores" text="Indicadores institucionais exemplificativos, em construção conforme o avanço da jornada." />
+          <SectionTitle align="center" eyebrow="Acompanhamento" title="Indicadores" text="Indicadores institucionais em construção conforme o avanço da jornada." />
           <div className="mx-auto grid max-w-5xl gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {odsIndicators.map((item, i) => {
               const Icon = indicatorIcons[i % indicatorIcons.length];

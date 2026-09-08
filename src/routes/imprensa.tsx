@@ -9,6 +9,7 @@ import {
   clipping,
   officialPhotos,
   pressDocs,
+  pressKitUrl,
   pressFacts,
   pressKitExcludes,
   pressKitIncludes,
@@ -53,7 +54,7 @@ function Imprensa() {
         brush="#FFB400"
         decoration="constellation"
       >
-        <HeroButton to="/contato" tone="gold">Baixar Kit de Imprensa</HeroButton>
+        <HeroButton to="/contato" tone="gold">Falar com a comunicação</HeroButton>
         <HeroButton to="/contato" tone="red">Solicitar entrevista</HeroButton>
 
       </PageHero>
@@ -246,32 +247,7 @@ function Imprensa() {
         <span className="pointer-events-none absolute left-10 bottom-12 hidden size-2.5 rotate-45 bg-brand-gold/55 md:block" aria-hidden="true" />
         <div className="container-x">
           <SectionTitle align="center" eyebrow="Conteúdo" title="Releases" text="Materiais sobre projetos, eventos, resultados e pautas institucionais." />
-          <ul className="mx-auto max-w-3xl divide-y divide-brand-petrol/10 overflow-hidden rounded-[20px] border border-brand-petrol/8 bg-brand-soft/35">
-            {releases.map((item) => (
-              <li key={item.title} className="group px-5 py-5 transition hover:bg-white/60 md:px-7 md:py-6">
-                <div className="flex flex-wrap items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.18em]">
-                  <span className="inline-flex items-center gap-1.5 text-brand-cyan">
-                    <span className="size-1.5 rotate-45 bg-brand-cyan" aria-hidden="true" />
-                    {item.category}
-                  </span>
-                  <span className="text-brand-gray/70">{item.date}</span>
-                </div>
-                <h3 className="mt-2 text-[1.05rem] font-bold leading-snug text-brand-ink md:text-[1.15rem]">{item.title}</h3>
-                <p className="mt-2 text-sm leading-[1.7] text-brand-gray">{item.summary}</p>
-                <Link to="/contato" className="mt-3 inline-flex w-fit items-center gap-2 border-b border-brand-cyan/40 pb-1 text-sm font-semibold text-brand-petrol transition hover:text-brand-cyan">
-                  Ler release <ArrowUpRight className="size-4 transition-transform group-hover:translate-x-0.5" aria-hidden="true" />
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </Section>
-
-      {/* Clipping */}
-      <Section id="clipping" className="overflow-hidden bg-brand-soft">
-        <HatchedCircle size={110} color="#08B9E6" className="pointer-events-none absolute -left-12 top-8 opacity-[0.14]" />
-        <div className="container-x">
-          <SectionTitle align="center" eyebrow="Na mídia" title="Clipping" text="Matérias, entrevistas e reportagens selecionadas sobre a Associação Maggu e suas iniciativas." />
+          {clipping.length > 0 ? (
           <ul className="mx-auto max-w-3xl divide-y divide-brand-petrol/10 overflow-hidden rounded-[20px] border border-brand-petrol/8 bg-white/75 shadow-[0_14px_34px_-32px_rgba(0,56,76,0.5)]">
             {clipping.map((item) => (
               <li key={item.title} className="relative flex flex-wrap items-center gap-4 px-5 py-5 transition hover:bg-brand-soft/40 md:px-7">
@@ -286,6 +262,11 @@ function Imprensa() {
               </li>
             ))}
           </ul>
+          ) : (
+            <p className="mx-auto max-w-3xl rounded-[16px] border border-dashed border-brand-petrol/18 bg-white/70 px-5 py-5 text-center text-sm text-brand-gray">
+              Nenhuma publicação de imprensa cadastrada neste momento.
+            </p>
+          )}
         </div>
       </Section>
 
@@ -293,6 +274,7 @@ function Imprensa() {
       <Section className="overflow-hidden bg-white">
         <div className="container-x">
           <SectionTitle align="center" eyebrow="Materiais" title="Documentos de apoio" text="Materiais públicos disponíveis para consulta e download." />
+          {pressDocs.length > 0 ? (
           <ul className="mx-auto max-w-3xl space-y-3">
             {pressDocs.map((doc, i) => {
               const color = docColors[i % docColors.length];
@@ -313,6 +295,11 @@ function Imprensa() {
             })}
 
           </ul>
+          ) : (
+            <p className="mx-auto max-w-3xl rounded-[16px] border border-dashed border-brand-petrol/18 bg-brand-soft/40 px-5 py-5 text-center text-sm text-brand-gray">
+              Nenhum material de apoio publicado neste momento.
+            </p>
+          )}
         </div>
       </Section>
 
@@ -340,9 +327,15 @@ function Imprensa() {
                     </li>
                   ))}
                 </ul>
-                <Link to="/contato" className="mt-5 inline-flex min-h-11 items-center gap-2 rounded-full bg-brand-petrol px-6 py-2.5 text-sm font-bold text-primary-foreground shadow-[0_12px_24px_-20px_rgba(0,56,76,0.9)] transition hover:-translate-y-0.5 hover:bg-brand-red">
-                  <Download className="size-4" aria-hidden="true" /> Baixar Kit de Imprensa
-                </Link>
+                {pressKitUrl ? (
+                  <a href={pressKitUrl} className="mt-5 inline-flex min-h-11 items-center gap-2 rounded-full bg-brand-petrol px-6 py-2.5 text-sm font-bold text-primary-foreground shadow-[0_12px_24px_-20px_rgba(0,56,76,0.9)] transition hover:-translate-y-0.5 hover:bg-brand-red">
+                    <Download className="size-4" aria-hidden="true" /> Baixar Kit de Imprensa
+                  </a>
+                ) : (
+                  <p className="mt-5 rounded-[12px] border border-dashed border-brand-petrol/18 bg-brand-soft/40 px-4 py-3 text-[13px] leading-relaxed text-brand-gray">
+                    Kit de Imprensa em organização. Materiais oficiais podem ser solicitados pelo contato de imprensa.
+                  </p>
+                )}
               </div>
             </div>
             <div className="grid gap-2.5 border-t border-brand-petrol/10 bg-brand-soft/35 px-5 py-4 md:grid-cols-[170px_1fr] md:items-start md:px-6">
@@ -414,7 +407,7 @@ function Imprensa() {
       <CompactFinalCTA
         title="Precisa de informações oficiais sobre a Maggu?"
         text="Acesse materiais institucionais, solicite entrevista ou entre em contato com a Associação."
-        primary={{ label: "Baixar Kit de Imprensa", href: "#kit" }}
+        primary={{ label: "Falar com a comunicação", to: "/contato" }}
         secondary={{ label: "Solicitar entrevista", to: "/contato" }}
         variant="press"
       />
