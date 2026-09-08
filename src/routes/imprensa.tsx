@@ -225,11 +225,9 @@ function Imprensa() {
               <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-brand-gold">Certificação</p>
               <h3 className="mt-1.5 text-lg font-bold text-brand-ink">Ponto de Cultura</h3>
               <p className="mt-2 max-w-2xl text-sm leading-[1.7] text-brand-gray">
-                O Teatro Escola Maggu é certificado como Ponto de Cultura pela Política Nacional Cultura Viva, integrando uma rede nacional de iniciativas culturais de base comunitária. Demais certificados e comprovações institucionais estão reunidos na área de Transparência.
+                O Teatro Escola Maggu é certificado como Ponto de Cultura pela Política Nacional Cultura Viva, integrando uma rede nacional de iniciativas culturais de base comunitária.
               </p>
-              <Link to="/transparencia" className="mt-4 inline-flex items-center gap-2 border-b border-brand-cyan/40 pb-1 text-sm font-semibold text-brand-petrol transition hover:text-brand-cyan">
-                Ver Transparência <ArrowUpRight className="size-4" aria-hidden="true" />
-              </Link>
+
             </div>
             <div className="relative flex min-h-44 flex-col items-center justify-center border-t border-brand-petrol/10 bg-brand-soft/40 px-6 py-5 md:border-l md:border-t-0">
               <span className="pointer-events-none absolute right-5 top-5 size-2 rotate-45 bg-brand-cyan/55" aria-hidden="true" />

@@ -211,10 +211,11 @@ function EcosystemSection() {
             <circle cx="214" cy="214" r="70" stroke="var(--brand-petrol)" strokeOpacity=".1" />
           </svg>
           {[
-            ["Arte", "bg-brand-red", "left-[7%] top-[15%]"], ["Audiovisual", "bg-brand-cyan", "right-[3%] top-[20%]"],
-            ["Memória", "bg-brand-gold", "left-[1%] top-[52%]"], ["Infância", "bg-brand-orange", "right-[2%] top-[50%]"],
-            ["Esporte", "bg-brand-petrol", "bottom-[4%] left-[18%]"], ["Sustentabilidade", "bg-brand-lime", "bottom-[8%] right-[9%]"],
-          ].map(([label, color, position]) => <span key={label} className={`absolute inline-flex items-center gap-2 rounded-full border border-brand-petrol/10 bg-background/80 px-3 py-2 text-xs font-semibold text-brand-ink shadow-sm backdrop-blur-sm ${position}`}><span className={`size-2.5 rounded-full ${color}`} aria-hidden="true" />{label}</span>)}
+            ["Arte, Cultura & Formação", "bg-brand-red", "left-[2%] top-[8%]"], ["Audiovisual & Comunicação", "bg-brand-cyan", "right-[1%] top-[24%]"],
+            ["Livro, Leitura & Memória", "bg-brand-gold", "left-[0%] top-[44%]"], ["Infância, Cidadania & Território", "bg-brand-orange", "right-[0%] top-[60%]"],
+            ["Esporte, Bem-estar & Inclusão", "bg-brand-petrol", "bottom-[2%] left-[6%]"], ["Sustentabilidade & Desenvolvimento", "bg-brand-lime", "bottom-[-4%] right-[2%]"],
+          ].map(([label, color, position]) => <span key={label} className={`absolute inline-flex max-w-[62%] items-center gap-2 rounded-full border border-brand-petrol/10 bg-background/85 px-3 py-1.5 text-[11px] font-semibold leading-tight text-brand-ink shadow-sm backdrop-blur-sm sm:text-xs ${position}`}><span className={`size-2.5 shrink-0 rounded-full ${color}`} aria-hidden="true" /><span className="whitespace-normal">{label}</span></span>)}
+
           <HatchedCircle size={92} color="#08B9E6" className="pointer-events-none absolute left-[38%] top-[38%] opacity-25" />
           <span className="absolute left-1/2 top-1/2 grid size-20 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full bg-brand-petrol text-center text-[11px] font-bold uppercase tracking-[0.1em] text-primary-foreground shadow-md">Território</span>
         </div>
