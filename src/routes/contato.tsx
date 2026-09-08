@@ -169,11 +169,11 @@ function SocialLinksArea() {
 }
 
 
-function Field({ label, name, type = "text" }: { label: string; name: string; type?: string }) {
+function Field({ label, name, type = "text", defaultValue }: { label: string; name: string; type?: string; defaultValue?: string }) {
   return (
     <div>
       <label htmlFor={name} className="block text-xs font-semibold mb-1.5">{label}</label>
-      <input id={name} name={name} type={type} required className="w-full rounded-lg border border-black/10 px-3 py-2 text-sm bg-brand-soft focus:bg-white outline-none focus:border-brand-red" />
+      <input id={name} name={name} type={type} defaultValue={defaultValue} required className="w-full rounded-lg border border-black/10 px-3 py-2 text-sm bg-brand-soft focus:bg-white outline-none focus:border-brand-red" />
     </div>
   );
 }
