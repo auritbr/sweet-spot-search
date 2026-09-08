@@ -70,7 +70,7 @@ function Imprensa() {
                 A <strong className="font-semibold text-brand-petrol">Associação Sócio Cultural Maggu</strong>, conhecida publicamente como Associação Maggu, é uma organização da sociedade civil sediada no bairro Benedito Bentes, em Maceió (AL). Formalizada em 2025, a instituição dá continuidade a uma trajetória de atuação cultural e comunitária construída junto a moradores, artistas, educadores e parceiros do território.
               </p>
               <p>
-                Sua missão é promover o acesso à cultura, à formação e à convivência comunitária, utilizando a arte como instrumento de transformação social. A Associação entende o território não apenas como endereço, mas como ponto de partida das suas escolhas: as ações nascem da escuta da comunidade e retornam a ela em forma de oficinas, apresentações, registros e encontros.
+                A missão da Associação é: “Transformar a exclusão cultural em obra-prima, antes que a criatividade seja uma relíquia do passado. Incluir, inspirar, criar.” Sua filosofia reconhece a arte como instrumento de transformação social. A Associação entende o território não apenas como endereço, mas como ponto de partida das suas escolhas: as ações nascem da escuta da comunidade e retornam a ela em forma de oficinas, apresentações, registros e encontros.
               </p>
               <p>
                 A atuação se organiza em frentes integradas — arte, cultura e formação; audiovisual e comunicação; livro e memória; infância e território; esporte e inclusão; sustentabilidade e desenvolvimento — reunidas no Ecossistema Maggu. Entre as iniciativas está o Teatro Escola Maggu, espaço de formação, criação e produção cultural que recebe cursos, oficinas, ensaios e ações abertas ao público.
@@ -225,7 +225,7 @@ function Imprensa() {
               <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-brand-gold">Certificação</p>
               <h3 className="mt-1.5 text-lg font-bold text-brand-ink">Ponto de Cultura</h3>
               <p className="mt-2 max-w-2xl text-sm leading-[1.7] text-brand-gray">
-                A Associação Maggu é reconhecida como Ponto de Cultura, credencial que reafirma sua atuação continuada no acesso à cultura, na formação e na articulação comunitária no Benedito Bentes. Demais certificados e comprovações institucionais estão reunidos na área de Transparência.
+                O Teatro Escola Maggu é certificado como Ponto de Cultura pela Política Nacional Cultura Viva, integrando uma rede nacional de iniciativas culturais de base comunitária. Demais certificados e comprovações institucionais estão reunidos na área de Transparência.
               </p>
               <Link to="/transparencia" className="mt-4 inline-flex items-center gap-2 border-b border-brand-cyan/40 pb-1 text-sm font-semibold text-brand-petrol transition hover:text-brand-cyan">
                 Ver Transparência <ArrowUpRight className="size-4" aria-hidden="true" />
