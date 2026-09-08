@@ -70,6 +70,11 @@ function Contato() {
           <div className="relative bg-white text-brand-ink rounded-2xl p-5 md:p-6 shadow-xl w-full lg:max-w-[520px] lg:justify-self-end">
             <h2 style={{ fontSize: "1.25rem", fontWeight: 700 }}>Envie sua mensagem</h2>
             <BrushStroke color="#FFB400" className="mt-2 w-16" />
+            {assunto && !sent && (
+              <p className="mt-3 rounded-lg border border-brand-cyan/25 bg-brand-soft px-3 py-2 text-xs font-semibold text-brand-petrol">
+                Assunto pré-selecionado: {assunto}
+              </p>
+            )}
             {sent ? (
               <p className="mt-5 p-4 rounded-xl bg-brand-lime/40 text-brand-ink font-semibold text-sm">Mensagem enviada com sucesso. Em breve retornamos!</p>
             ) : (
@@ -77,7 +82,8 @@ function Contato() {
                 <Field label="Nome completo" name="nome" />
                 <Field label="E-mail" name="email" type="email" />
                 <Field label="Telefone" name="tel" />
-                <Field label="Assunto" name="assunto" />
+                <Field label="Assunto" name="assunto" defaultValue={assunto} />
+
                 <div>
                   <label htmlFor="msg" className="block text-xs font-semibold mb-1.5">Mensagem</label>
                   <textarea id="msg" name="msg" required rows={4} className="w-full rounded-lg border border-black/10 px-3 py-2 text-sm bg-brand-soft focus:bg-white outline-none focus:border-brand-red" />
