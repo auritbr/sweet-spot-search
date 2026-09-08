@@ -168,47 +168,37 @@ function QuemSomos() {
       <Section className="relative overflow-hidden bg-white">
         <span className="pointer-events-none absolute inset-x-0 top-0 h-px bg-brand-petrol/10" aria-hidden="true" />
         <div className="container-x">
-          <SectionTitle align="center" eyebrow="O que nos orienta" title="Missão, visão e valores" text="Referências que orientam a atuação da Associação e conectam suas diferentes iniciativas." />
-          <div className="grid gap-5 lg:grid-cols-3">
-            <article className="relative flex min-h-[330px] flex-col justify-between overflow-hidden rounded-[1.75rem] border border-primary-foreground/25 bg-brand-petrol/95 p-7 shadow-[0_18px_40px_-28px_rgba(0,56,76,0.65)] ring-1 ring-inset ring-primary-foreground/10 backdrop-blur-sm md:p-8">
-              <span className="pointer-events-none absolute inset-x-0 top-0 h-px bg-primary-foreground/25" aria-hidden="true" />
-              <ArcThick color="#08B9E6" className="pointer-events-none absolute -right-10 -top-12 w-36 opacity-35" from={190} to={330} />
-              <Triangle color="#FFB400" size={42} className="pointer-events-none absolute right-8 top-10 opacity-90" rotate={18} />
+          <SectionTitle align="center" eyebrow="O que nos orienta" title="Missão, filosofia e princípios" text="Referências que orientam a atuação da Associação e conectam suas diferentes iniciativas." />
+          <div className="mx-auto grid max-w-5xl gap-5 md:grid-cols-2">
+            <article className="relative flex min-h-[230px] flex-col justify-between overflow-hidden rounded-[1.75rem] border border-primary-foreground/25 bg-brand-petrol/95 p-7 shadow-[0_18px_40px_-28px_rgba(0,56,76,0.65)] ring-1 ring-inset ring-primary-foreground/10 md:p-8">
+              <ArcThick color="#08B9E6" className="pointer-events-none absolute -right-10 -top-12 w-32 opacity-35" from={190} to={330} />
+              <Triangle color="#FFB400" size={34} className="pointer-events-none absolute right-8 top-9 opacity-90" rotate={18} />
               <p className="relative text-xs font-bold uppercase tracking-[0.22em] text-brand-gold">Missão</p>
-              <div className="relative">
-                <span className="mb-6 block h-1.5 w-16 bg-brand-red" aria-hidden="true" />
-                <h3 className="text-xl leading-snug text-primary-foreground md:text-2xl">Transformar a exclusão cultural em obra-prima, antes que a criatividade seja uma relíquia do passado. Incluir, inspirar, criar.</h3>
+              <div className="relative mt-6">
+                <span className="mb-5 block h-1.5 w-14 bg-brand-red" aria-hidden="true" />
+                <h3 className="text-lg leading-snug text-primary-foreground md:text-xl">Transformar a exclusão cultural em obra-prima, antes que a criatividade seja uma relíquia do passado. Incluir, inspirar, criar.</h3>
               </div>
             </article>
 
-            <article className="relative flex min-h-[330px] flex-col justify-between overflow-hidden rounded-[1.75rem] border border-brand-petrol/15 bg-brand-cyan/90 p-7 shadow-[0_18px_40px_-28px_rgba(0,56,76,0.5)] ring-1 ring-inset ring-white/25 backdrop-blur-sm md:p-8">
-              <span className="pointer-events-none absolute inset-x-0 top-0 h-px bg-white/45" aria-hidden="true" />
+            <article className="relative flex min-h-[230px] flex-col justify-between overflow-hidden rounded-[1.75rem] border border-brand-petrol/15 bg-brand-cyan/90 p-7 shadow-[0_18px_40px_-28px_rgba(0,56,76,0.5)] ring-1 ring-inset ring-white/25 md:p-8">
               <span className="pointer-events-none absolute -right-10 top-10 h-24 w-24 rounded-full border-[14px] border-brand-petrol/15" aria-hidden="true" />
-              <span className="pointer-events-none absolute right-7 top-[5.3rem] h-px w-28 bg-brand-petrol/35" aria-hidden="true" />
-              <p className="relative text-xs font-bold uppercase tracking-[0.22em] text-brand-petrol">Visão</p>
-              <div className="relative">
-                <HatchedCircle size={68} color="#00384C" className="mb-5 opacity-25" />
-                <h3 className="text-2xl leading-snug text-brand-petrol">A arte como instrumento de transformação social.</h3>
+              <p className="relative text-xs font-bold uppercase tracking-[0.22em] text-brand-petrol">Filosofia</p>
+              <div className="relative mt-6">
+                <HatchedCircle size={56} color="#00384C" className="mb-5 opacity-25" />
+                <h3 className="text-xl leading-snug text-brand-petrol md:text-2xl">A arte como instrumento de transformação social.</h3>
               </div>
             </article>
 
-            <article className="relative flex min-h-[330px] flex-col justify-between overflow-hidden rounded-[1.75rem] border border-brand-petrol/15 bg-brand-gold/90 p-7 shadow-[0_18px_40px_-28px_rgba(0,56,76,0.5)] ring-1 ring-inset ring-white/25 backdrop-blur-sm md:p-8">
-              <span className="pointer-events-none absolute inset-x-0 top-0 h-px bg-white/50" aria-hidden="true" />
-              <DiamondsCluster color="#ED1C24" className="pointer-events-none absolute right-7 top-7 opacity-60" size={50} />
-              <QuarterCircle corner="bl" color="#00384C" className="pointer-events-none absolute bottom-0 left-0 w-20 opacity-15" />
-              <p className="relative text-xs font-bold uppercase tracking-[0.22em] text-brand-red">Valores</p>
-              <div className="relative">
-                <div className="mb-6 flex items-center gap-2" aria-hidden="true">
-                  <span className="size-5 rounded-full bg-brand-red" />
-                  <span className="size-5 rounded-full bg-brand-cyan" />
-                  <span className="size-5 rounded-full bg-brand-petrol" />
-                </div>
-                <h3 className="text-xl leading-snug text-brand-petrol md:text-2xl">É a partir dessa compreensão que a Associação desenvolve experiências de formação, criação, convivência, memória e participação cultural.</h3>
-              </div>
+            <article className="relative overflow-hidden rounded-[1.75rem] border border-brand-petrol/15 bg-brand-gold/90 p-7 shadow-[0_18px_40px_-28px_rgba(0,56,76,0.5)] ring-1 ring-inset ring-white/25 md:col-span-2 md:p-8">
+              <DiamondsCluster color="#ED1C24" className="pointer-events-none absolute right-6 top-6 opacity-50" size={44} />
+              <QuarterCircle corner="bl" color="#00384C" className="pointer-events-none absolute bottom-0 left-0 w-16 opacity-15" />
+              <p className="relative text-xs font-bold uppercase tracking-[0.22em] text-brand-red">Princípios que orientam nossa atuação</p>
+              <p className="relative mt-4 max-w-3xl text-lg leading-relaxed text-brand-petrol md:text-xl">Ética, respeito à diversidade, participação, transparência, responsabilidade, valorização da cultura, memória, território e compromisso com a transformação social.</p>
             </article>
           </div>
         </div>
       </Section>
+
 
 
       <Section className="overflow-hidden bg-brand-soft">

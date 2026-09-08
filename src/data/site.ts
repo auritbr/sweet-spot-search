@@ -285,15 +285,18 @@ export const albums = [
     photos: ["https://images.unsplash.com/photo-1503095396549-807759245b35?auto=format&fit=crop&w=1600&q=80"]},
 ];
 
-export const documents = [
-  { name: "Relatório Anual 2025", category: "Relatórios", year: 2025, format: "PDF", size: "2.3 MB", url: "#" },
-  { name: "Prestação de Contas 2025", category: "Prestação de contas", year: 2025, format: "PDF", size: "1.8 MB", url: "#" },
-  { name: "Estatuto Social", category: "Institucional", year: 2024, format: "PDF", size: "540 KB", url: "#" },
-  { name: "Ata da Assembleia 2025", category: "Atas", year: 2025, format: "PDF", size: "310 KB", url: "#" },
-  { name: "Certidão Negativa Federal", category: "Certidões", year: 2026, format: "PDF", size: "180 KB", url: "#" },
-  { name: "Plano de Trabalho — Palco Aberto", category: "Planos de trabalho", year: 2025, format: "PDF", size: "720 KB", url: "#" },
-  { name: "Convênio Cultural Municipal", category: "Convênios", year: 2024, format: "PDF", size: "980 KB", url: "#" },
-  { name: "Edital de Seleção 2026", category: "Editais", year: 2026, format: "PDF", size: "450 KB", url: "#" },
-  { name: "Política de Privacidade", category: "Políticas", year: 2026, format: "PDF", size: "220 KB", url: "#" },
-  { name: "Política de Proteção a Crianças e Adolescentes", category: "Políticas", year: 2025, format: "PDF", size: "260 KB", url: "#" },
-];
+/**
+ * TIPO 1 — DOCUMENTO INSTITUCIONAL (destino: Transparência).
+ * Estatuto, atas, certidões, políticas e relatórios institucionais.
+ * Somente documentos reais e validados. Nenhum item demonstrativo.
+ */
+export type InstitutionalDocument = {
+  name: string;
+  category: "Documentos" | "Relatórios" | "Integridade";
+  year: number;
+  format: string;
+  url: string;
+};
+
+export const documents: InstitutionalDocument[] = [];
+

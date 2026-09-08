@@ -1,8 +1,12 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, CalendarCheck2, FolderKanban, History, MapPinned, Users } from "lucide-react";
+import { ArrowRight, CalendarCheck2, FileText, FolderKanban, History, MapPinned, Users } from "lucide-react";
+import { useMemo, useState } from "react";
 import { CompactFinalCTA } from "@/components/CompactFinalCTA";
 import { HeroButton, PageHero, Section, SectionTitle } from "@/components/PageHero";
-import { ArcThick, HatchedCircle, Triangle } from "@/components/Shapes";
+import { ArcThick, HatchedCircle } from "@/components/Shapes";
+import { evidences, evidenceTypes } from "@/data/evidencias";
+import { projects } from "@/data/site";
+
 
 export const Route = createFileRoute("/impacto-memoria")({ head:()=>({meta:[
  {title:"Impacto & Memória | Associação Maggu"},{name:"description",content:"Conheça marcos, memórias e evidências da trajetória da Associação Maggu."},{property:"og:title",content:"Impacto & Memória | Associação Maggu"},{property:"og:description",content:"Resultados e histórias da Associação Maggu caminham juntos."},{property:"og:type",content:"website"},{name:"twitter:card",content:"summary_large_image"},
@@ -65,29 +69,65 @@ function ImpactoMemoria(){return <>
    <ArcThick color="#FFB400" className="pointer-events-none absolute -right-10 top-8 w-20 opacity-[0.1]" from={25} to={150} />
    <span className="pointer-events-none absolute left-[6%] bottom-10 hidden size-2.5 rotate-45 bg-brand-cyan/50 md:block" aria-hidden="true" />
    <span className="pointer-events-none absolute left-[9%] top-12 hidden tracking-[0.4em] text-brand-red/20 md:block" aria-hidden="true">•••</span>
-   <div className="container-x"><div className="mx-auto max-w-3xl text-center"><SectionTitle align="center" eyebrow="Histórias" title="Nem todo impacto cabe em um número." text="Esta área está preparada para histórias e relatos relacionados às iniciativas, publicados somente após validação institucional."/>
-    <article className="mx-auto mt-4 max-w-[860px] rounded-[16px] border border-brand-petrol/10 bg-background px-6 py-7 text-left shadow-[0_10px_24px_-24px_rgba(0,56,76,0.5)] sm:px-8">
-     <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-brand-red">Conteúdo ilustrativo e fictício</p>
-     <p className="mt-3 text-[17px] leading-relaxed text-brand-ink sm:text-[18px]">Uma adolescente chegou à oficina de teatro observando tudo em silêncio. Aos poucos, encontrou nas cenas um jeito de falar, criar vínculos e dividir ideias com o grupo. A família percebeu que aquele encontro semanal também havia se tornado um espaço de convivência e confiança.</p>
-     <p className="mt-4 text-xs leading-relaxed text-brand-gray/80">Relato fictício criado exclusivamente para demonstrar como futuras histórias poderão ser apresentadas nesta seção.</p>
-    </article>
+   <div className="container-x"><div className="mx-auto max-w-[720px] text-center">
+    <SectionTitle align="center" eyebrow="Histórias" title="Nem todo impacto cabe em um número."/>
+    <p className="mx-auto -mt-1 max-w-[620px] text-[15px] leading-relaxed text-brand-gray">Histórias e relatos das iniciativas serão publicados nesta área após autorização e validação institucional.</p>
    </div></div>
   </Section>
 
-  <Section id="evidencias" className="relative overflow-hidden bg-brand-soft">
-   <Triangle color="#FFB400" size={20} className="pointer-events-none absolute right-[8%] top-8 opacity-25" rotate={22}/>
-   <div className="container-x">
-    <div className="mx-auto flex max-w-[1000px] flex-col gap-4 rounded-[16px] border border-brand-petrol/10 bg-background/80 px-6 py-6 md:flex-row md:items-center md:justify-between md:gap-8 md:px-8">
-     <div className="max-w-[640px]">
-      <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-brand-red">Evidências</p>
-      <h2 className="mt-2 text-[20px] font-bold leading-snug text-brand-ink sm:text-[22px]">Documentos que ajudam a comprovar trajetórias e resultados.</h2>
-      <p className="mt-2 text-sm leading-relaxed text-brand-gray">O Banco de Evidências reúne certificados, declarações, registros, matérias, relatórios, programas, publicações e outros documentos comprobatórios.</p>
-     </div>
-     <Link to="/transparencia" className="group inline-flex shrink-0 items-center gap-1.5 text-sm font-semibold text-brand-petrol underline-offset-4 transition hover:underline">Acessar Transparência <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5" aria-hidden="true"/></Link>
-    </div>
-   </div>
-  </Section>
+  <BancoDeEvidencias />
+
 
 
   <CompactFinalCTA title="Uma trajetória se fortalece quando pode ser conhecida, lembrada e compartilhada." text="Explore as iniciativas da Maggu, conheça o território onde essa história acontece e consulte os documentos que ajudam a registrar sua continuidade." primary={{label:"Ecossistema",to:"/ecossistema"}} secondary={{label:"Território",to:"/quem-somos/territorio"}} tertiary={{label:"Transparência",to:"/transparencia"}} variant="impact"/>
  </>}
+const ALL = "Todos";
+
+function BancoDeEvidencias(){
+ const [type,setType]=useState<string>(ALL);
+ const [initiative,setInitiative]=useState<string>(ALL);
+ const [year,setYear]=useState<string>(ALL);
+
+ const initiatives=useMemo(()=>[ALL,...projects.map(p=>p.name)],[]);
+ const years=useMemo(()=>[ALL,...Array.from(new Set(evidences.map(e=>String(e.year)))).sort().reverse()],[]);
+ const visible=evidences.filter(e=>(type===ALL||e.type===type)&&(initiative===ALL||e.initiative===initiative)&&(year===ALL||String(e.year)===year));
+
+ const select="rounded-full border border-brand-petrol/15 bg-background px-3 py-1.5 text-xs font-semibold text-brand-petrol";
+
+ return <Section id="evidencias" className="relative overflow-hidden bg-brand-soft">
+  <span className="pointer-events-none absolute -right-8 top-10 size-16 rounded-full border-[9px] border-brand-gold/15" aria-hidden="true" />
+  <div className="container-x">
+   <div className="mx-auto max-w-[760px] text-center">
+    <SectionTitle align="center" eyebrow="Evidências" title="Banco de Evidências" />
+    <p className="mx-auto -mt-1 max-w-[680px] text-[15px] leading-relaxed text-brand-gray">Certificados, declarações, registros, programas, publicações, matérias, relatórios e outros documentos ajudam a comprovar e preservar a trajetória das iniciativas do Ecossistema Maggu.</p>
+   </div>
+
+   <div className="mx-auto mt-7 flex max-w-[900px] flex-wrap items-center justify-center gap-2 rounded-2xl border border-brand-petrol/10 bg-background/70 p-3">
+    <label className="flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.16em] text-brand-gray/70">Tipo
+     <select value={type} onChange={e=>setType(e.target.value)} className={select}><option value={ALL}>Todos</option>{evidenceTypes.map(t=><option key={t} value={t}>{t}</option>)}</select>
+    </label>
+    <label className="flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.16em] text-brand-gray/70">Iniciativa
+     <select value={initiative} onChange={e=>setInitiative(e.target.value)} className={`${select} max-w-[220px]`}>{initiatives.map(i=><option key={i} value={i}>{i}</option>)}</select>
+    </label>
+    <label className="flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.16em] text-brand-gray/70">Ano
+     <select value={year} onChange={e=>setYear(e.target.value)} disabled={years.length<2} className={`${select} disabled:opacity-50`}>{years.map(y=><option key={y} value={y}>{y}</option>)}</select>
+    </label>
+   </div>
+
+   {visible.length===0
+    ? <div className="mx-auto mt-6 flex max-w-[640px] items-center gap-3 rounded-xl border border-brand-petrol/10 bg-background/60 px-5 py-4">
+       <FileText className="size-4 shrink-0 text-brand-petrol/60" aria-hidden="true" />
+       <p className="text-sm leading-relaxed text-brand-gray">Nenhuma evidência publicada nesta categoria neste momento.</p>
+      </div>
+    : <ul className="mx-auto mt-6 grid max-w-[980px] gap-3 sm:grid-cols-2">
+       {visible.map(item=><li key={`${item.title}-${item.year}`} className="rounded-[15px] border border-brand-petrol/10 bg-background/80 p-5">
+        <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-brand-red">{item.type}</p>
+        <h3 className="mt-2 text-base leading-snug text-brand-ink">{item.title}</h3>
+        <p className="mt-1.5 text-xs text-brand-gray">{item.initiative} · {item.year}</p>
+        {item.context ? <p className="mt-2 text-sm leading-relaxed text-brand-gray">{item.context}</p> : null}
+        {item.url ? <a href={item.url} target="_blank" rel="noopener noreferrer" className="mt-3 inline-flex items-center gap-1.5 text-sm font-semibold text-brand-petrol underline-offset-4 hover:underline">Visualizar <ArrowRight className="size-4" aria-hidden="true"/></a> : null}
+       </li>)}
+      </ul>}
+  </div>
+ </Section>;
+}
