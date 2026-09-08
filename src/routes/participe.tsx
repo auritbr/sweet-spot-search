@@ -19,7 +19,7 @@ export const Route = createFileRoute("/participe")({
 
 const paths = [
   { title: "Atividades", text: "Veja o que está acontecendo e encontre uma ação para participar.", cta: "Ver Agenda", to: "/agenda", icon: CalendarDays, accent: "bg-brand-red", soft: "bg-brand-red/8" },
-  { title: "Formação", text: "Conheça cursos, oficinas e percursos formativos.", cta: "Ver formações", to: "/projetos", icon: GraduationCap, accent: "bg-brand-gold", soft: "bg-brand-gold/12" },
+  { title: "Formação", text: "Conheça cursos, oficinas e percursos formativos.", cta: "Ver Formações", to: "/agenda", search: { categoria: "Formação" }, icon: GraduationCap, accent: "bg-brand-gold", soft: "bg-brand-gold/12" },
   { title: "Colaboração", text: "Artistas, educadores, voluntários e outros colaboradores podem somar conhecimentos e experiências.", cta: "Quero colaborar", href: "#colaboracao", icon: Sparkles, accent: "bg-brand-cyan", soft: "bg-brand-cyan/10" },
   { title: "Parcerias", text: "Instituições, empresas e organizações podem construir ações, projetos e cooperações com a Associação.", cta: "Propor parceria", href: "#parcerias", icon: Handshake, accent: "bg-brand-orange", soft: "bg-brand-orange/10" },
   { title: "Apoio", text: "Contribuições, materiais, livros, equipamentos, serviços e outras formas de apoio ajudam a manter iniciativas em movimento.", cta: "Quero apoiar", href: "#apoie", icon: HandHeart, accent: "bg-brand-lime", soft: "bg-brand-lime/10" },
@@ -62,7 +62,7 @@ function Participe() {
               <p className="mt-2 flex-1 text-[13px] leading-[1.55] text-brand-gray">{item.text}</p>
               {"href" in item
                 ? <a href={item.href} className={linkClasses}>{item.cta}<ArrowRight className="size-4" aria-hidden="true" /></a>
-                : <Link to={item.to} className={linkClasses}>{item.cta}<ArrowRight className="size-4" aria-hidden="true" /></Link>}
+                : <Link to={item.to} search={"search" in item ? item.search : undefined} className={linkClasses}>{item.cta}<ArrowRight className="size-4" aria-hidden="true" /></Link>}
             </article>;
           })}
         </div>
@@ -113,7 +113,7 @@ function Participe() {
           </div>)}
         </div>
         <div className="mt-7 text-center">
-          <a href="https://associacao-maggu.vercel.app/contato" className="group inline-flex items-center gap-1.5 text-sm font-semibold text-brand-petrol underline-offset-4 transition hover:underline">
+          <a href="https://associacao-maggu.vercel.app/contato?assunto=Parceria" className="group inline-flex items-center gap-1.5 text-sm font-semibold text-brand-petrol underline-offset-4 transition hover:underline">
             Propor parceria <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5" aria-hidden="true" />
           </a>
         </div>
@@ -132,7 +132,7 @@ function Participe() {
             <h2 className="mt-2 text-xl text-brand-ink md:text-2xl">Conhecimento também pode ser compartilhado.</h2>
             <p className="mt-2.5 max-w-2xl text-sm leading-relaxed text-brand-gray">Artistas, educadores, voluntários e outros profissionais podem colaborar com experiências, saberes e práticas em diferentes iniciativas da Associação.</p>
           </div>
-          <Button asChild size="sm" className="rounded-full bg-brand-petrol px-5 text-primary-foreground hover:bg-brand-red"><Link to="/contato">Quero colaborar</Link></Button>
+          <Button asChild size="sm" className="rounded-full bg-brand-petrol px-5 text-primary-foreground hover:bg-brand-red"><Link to="/contato" search={{ assunto: "Colaboração" }}>Quero colaborar</Link></Button>
         </div>
         <div className="relative mx-auto mt-3 grid max-w-3xl items-center gap-4 overflow-hidden rounded-[12px] border border-brand-petrol/10 bg-background/65 px-5 py-4 md:grid-cols-[1fr_auto]">
           <span className="pointer-events-none absolute left-0 top-4 h-7 w-1 rounded-r-full bg-brand-gold" aria-hidden="true" />
