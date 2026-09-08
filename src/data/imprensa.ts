@@ -78,17 +78,15 @@ export const releases = [
   },
 ];
 
-export const clipping = [
-  { title: "Cultura de periferia: o teatro que forma no Benedito Bentes", outlet: "Veículo regional", date: "2026", url: "#" },
-  { title: "Entrevista: arte, território e juventude em Maceió", outlet: "Rádio comunitária", date: "2026", url: "#" },
-  { title: "Ponto de Cultura amplia acesso a atividades formativas", outlet: "Portal de notícias", date: "2026", url: "#" },
-];
+// Somente matérias reais e validadas. Enquanto vazio, a seção exibe estado vazio institucional.
+export type ClippingItem = { title: string; outlet: string; date: string; url: string };
+export const clipping: ClippingItem[] = [];
 
-export const pressDocs = [
-  { name: "Portfólio institucional público", format: "PDF", url: "#" },
-  { name: "Apresentação institucional resumida", format: "PDF", url: "#" },
-  { name: "Ficha rápida da Associação", format: "PDF", url: "#" },
-];
+// Somente documentos com arquivo real publicado.
+export type PressDoc = { name: string; format: string; url: string };
+export const pressDocs: PressDoc[] = [];
+// Kit de Imprensa: definir a URL real quando o arquivo existir.
+export const pressKitUrl: string | null = null;
 
 export const pressKitIncludes = [
   "Release institucional",

@@ -49,12 +49,9 @@ export const odsIndicators = [
   { label: "Evidências publicadas", note: "Documentos e registros disponibilizados publicamente." },
 ];
 
-export const odsEvidence = [
-  { name: "Documento de compromissos", category: "Compromissos", url: "#" },
-  { name: "Evidências institucionais", category: "Evidências", url: "#" },
-  { name: "Materiais de acompanhamento", category: "Acompanhamento", url: "#" },
-  { name: "Referências públicas", category: "Referências", url: "#" },
-];
+// Somente documentos/evidências com arquivo real publicado.
+export type OdsEvidenceItem = { name: string; category: string; url: string };
+export const odsEvidence: OdsEvidenceItem[] = [];
 
 export const odsRelatedProjects = [
   { title: "Sustentabilidade & Desenvolvimento", text: "Práticas responsáveis e cuidado com o território.", accent: "#3F7E44" },
