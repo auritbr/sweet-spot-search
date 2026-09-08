@@ -62,7 +62,7 @@ function Participe() {
               <p className="mt-2 flex-1 text-[13px] leading-[1.55] text-brand-gray">{item.text}</p>
               {"href" in item
                 ? <a href={item.href} className={linkClasses}>{item.cta}<ArrowRight className="size-4" aria-hidden="true" /></a>
-                : <Link to={item.to} search={"search" in item ? item.search : undefined} className={linkClasses}>{item.cta}<ArrowRight className="size-4" aria-hidden="true" /></Link>}
+                : <Link to={item.to} search={"search" in item ? item.search : {}} className={linkClasses}>{item.cta}<ArrowRight className="size-4" aria-hidden="true" /></Link>}
             </article>;
           })}
         </div>

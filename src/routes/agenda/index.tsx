@@ -30,9 +30,8 @@ export const Route = createFileRoute("/agenda/")({
     ],
     links: [{ rel: "canonical", href: "/agenda" }],
   }),
-  validateSearch: (search: Record<string, unknown>) => ({
-    categoria: typeof search.categoria === "string" ? search.categoria : undefined,
-  }),
+  validateSearch: (search: Record<string, unknown>): { categoria?: string } =>
+    typeof search.categoria === "string" ? { categoria: search.categoria } : {},
   component: Agenda,
 });
 

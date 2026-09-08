@@ -17,9 +17,8 @@ export const Route = createFileRoute("/contato")({
     ],
     links: [{ rel: "canonical", href: "/contato" }],
   }),
-  validateSearch: (search: Record<string, unknown>) => ({
-    assunto: typeof search.assunto === "string" ? search.assunto : undefined,
-  }),
+  validateSearch: (search: Record<string, unknown>): { assunto?: string } =>
+    typeof search.assunto === "string" ? { assunto: search.assunto } : {},
   component: Contato,
 });
 
