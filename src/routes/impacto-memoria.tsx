@@ -81,3 +81,53 @@ function ImpactoMemoria(){return <>
 
   <CompactFinalCTA title="Uma trajetória se fortalece quando pode ser conhecida, lembrada e compartilhada." text="Explore as iniciativas da Maggu, conheça o território onde essa história acontece e consulte os documentos que ajudam a registrar sua continuidade." primary={{label:"Ecossistema",to:"/ecossistema"}} secondary={{label:"Território",to:"/quem-somos/territorio"}} tertiary={{label:"Transparência",to:"/transparencia"}} variant="impact"/>
  </>}
+const ALL = "Todos";
+
+function BancoDeEvidencias(){
+ const [type,setType]=useState<string>(ALL);
+ const [initiative,setInitiative]=useState<string>(ALL);
+ const [year,setYear]=useState<string>(ALL);
+
+ const initiatives=useMemo(()=>[ALL,...projects.map(p=>p.name)],[]);
+ const years=useMemo(()=>[ALL,...Array.from(new Set(evidences.map(e=>String(e.year)))).sort().reverse()],[]);
+ const visible=evidences.filter(e=>(type===ALL||e.type===type)&&(initiative===ALL||e.initiative===initiative)&&(year===ALL||String(e.year)===year));
+
+ const select="rounded-full border border-brand-petrol/15 bg-background px-3 py-1.5 text-xs font-semibold text-brand-petrol";
+
+ return <Section id="evidencias" className="relative overflow-hidden bg-brand-soft">
+  <span className="pointer-events-none absolute -right-8 top-10 size-16 rounded-full border-[9px] border-brand-gold/15" aria-hidden="true" />
+  <div className="container-x">
+   <div className="mx-auto max-w-[760px] text-center">
+    <SectionTitle align="center" eyebrow="Evidências" title="Banco de Evidências" />
+    <p className="mx-auto -mt-1 max-w-[680px] text-[15px] leading-relaxed text-brand-gray">Certificados, declarações, registros, programas, publicações, matérias, relatórios e outros documentos ajudam a comprovar e preservar a trajetória das iniciativas do Ecossistema Maggu.</p>
+   </div>
+
+   <div className="mx-auto mt-7 flex max-w-[900px] flex-wrap items-center justify-center gap-2 rounded-2xl border border-brand-petrol/10 bg-background/70 p-3">
+    <label className="flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.16em] text-brand-gray/70">Tipo
+     <select value={type} onChange={e=>setType(e.target.value)} className={select}><option value={ALL}>Todos</option>{evidenceTypes.map(t=><option key={t} value={t}>{t}</option>)}</select>
+    </label>
+    <label className="flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.16em] text-brand-gray/70">Iniciativa
+     <select value={initiative} onChange={e=>setInitiative(e.target.value)} className={`${select} max-w-[220px]`}>{initiatives.map(i=><option key={i} value={i}>{i}</option>)}</select>
+    </label>
+    <label className="flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.16em] text-brand-gray/70">Ano
+     <select value={year} onChange={e=>setYear(e.target.value)} disabled={years.length<2} className={`${select} disabled:opacity-50`}>{years.map(y=><option key={y} value={y}>{y}</option>)}</select>
+    </label>
+   </div>
+
+   {visible.length===0
+    ? <div className="mx-auto mt-6 flex max-w-[640px] items-center gap-3 rounded-xl border border-brand-petrol/10 bg-background/60 px-5 py-4">
+       <FileText className="size-4 shrink-0 text-brand-petrol/60" aria-hidden="true" />
+       <p className="text-sm leading-relaxed text-brand-gray">Nenhuma evidência publicada nesta categoria neste momento.</p>
+      </div>
+    : <ul className="mx-auto mt-6 grid max-w-[980px] gap-3 sm:grid-cols-2">
+       {visible.map(item=><li key={`${item.title}-${item.year}`} className="rounded-[15px] border border-brand-petrol/10 bg-background/80 p-5">
+        <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-brand-red">{item.type}</p>
+        <h3 className="mt-2 text-base leading-snug text-brand-ink">{item.title}</h3>
+        <p className="mt-1.5 text-xs text-brand-gray">{item.initiative} · {item.year}</p>
+        {item.context ? <p className="mt-2 text-sm leading-relaxed text-brand-gray">{item.context}</p> : null}
+        {item.url ? <a href={item.url} target="_blank" rel="noopener noreferrer" className="mt-3 inline-flex items-center gap-1.5 text-sm font-semibold text-brand-petrol underline-offset-4 hover:underline">Visualizar <ArrowRight className="size-4" aria-hidden="true"/></a> : null}
+       </li>)}
+      </ul>}
+  </div>
+ </Section>;
+}
