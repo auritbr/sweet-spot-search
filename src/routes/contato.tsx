@@ -17,6 +17,9 @@ export const Route = createFileRoute("/contato")({
     ],
     links: [{ rel: "canonical", href: "/contato" }],
   }),
+  validateSearch: (search: Record<string, unknown>) => ({
+    assunto: typeof search.assunto === "string" ? search.assunto : undefined,
+  }),
   component: Contato,
 });
 
@@ -28,6 +31,7 @@ const socialLinks = [
 ] as const;
 
 function Contato() {
+  const { assunto } = Route.useSearch();
   const [sent, setSent] = useState(false);
   const mapsQuery = encodeURIComponent(site.address);
   const mapsUrl = `https://www.google.com/maps?q=${mapsQuery}`;
