@@ -205,20 +205,25 @@ function EcosystemSection() {
           </div>
           <Link to="/ecossistema" className="mt-7 inline-flex rounded-full bg-brand-petrol px-7 py-3 text-sm font-bold text-white transition hover:bg-brand-red">Conheça o Ecossistema</Link>
         </div>
-        <div className="relative mx-auto aspect-square w-full max-w-[430px]" role="img" aria-label="Composição gráfica abstrata representando os seis eixos conectados do Ecossistema Maggu">
-          <svg className="absolute inset-0 h-full w-full" viewBox="0 0 430 430" fill="none" aria-hidden="true">
-            <path d="M80 129C145 48 280 52 346 129M71 226C130 176 300 176 359 226M92 310C174 374 275 366 341 302M120 90L316 332M320 92L104 320" stroke="var(--brand-petrol)" strokeOpacity=".12" strokeWidth="2" />
-            <circle cx="214" cy="214" r="70" stroke="var(--brand-petrol)" strokeOpacity=".1" />
-          </svg>
-          {[
-            ["Arte, Cultura & Formação", "bg-brand-red", "left-[2%] top-[8%]"], ["Audiovisual & Comunicação", "bg-brand-cyan", "right-[1%] top-[24%]"],
-            ["Livro, Leitura & Memória", "bg-brand-gold", "left-[0%] top-[44%]"], ["Infância, Cidadania & Território", "bg-brand-orange", "right-[0%] top-[60%]"],
-            ["Esporte, Bem-estar & Inclusão", "bg-brand-petrol", "bottom-[2%] left-[6%]"], ["Sustentabilidade & Desenvolvimento", "bg-brand-lime", "bottom-[-4%] right-[2%]"],
-          ].map(([label, color, position]) => <span key={label} className={`absolute inline-flex max-w-[62%] items-center gap-2 rounded-full border border-brand-petrol/10 bg-background/85 px-3 py-1.5 text-[11px] font-semibold leading-tight text-brand-ink shadow-sm backdrop-blur-sm sm:text-xs ${position}`}><span className={`size-2.5 shrink-0 rounded-full ${color}`} aria-hidden="true" /><span className="whitespace-normal">{label}</span></span>)}
-
-          <HatchedCircle size={92} color="#08B9E6" className="pointer-events-none absolute left-[38%] top-[38%] opacity-25" />
-          <span className="absolute left-1/2 top-1/2 grid size-20 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full bg-brand-petrol text-center text-[11px] font-bold uppercase tracking-[0.1em] text-primary-foreground shadow-md">Território</span>
+        <div className="mx-auto w-full max-w-[430px] lg:max-w-[470px]">
+          <div className="relative aspect-square w-full" role="img" aria-label="Composição gráfica abstrata representando os seis eixos conectados do Ecossistema Maggu">
+            <svg className="absolute inset-0 h-full w-full" viewBox="0 0 430 430" fill="none" aria-hidden="true">
+              <path d="M80 129C145 48 280 52 346 129M71 226C130 176 300 176 359 226M92 310C174 374 275 366 341 302M120 90L316 332M320 92L104 320" stroke="var(--brand-petrol)" strokeOpacity=".12" strokeWidth="2" />
+              <circle cx="214" cy="214" r="70" stroke="var(--brand-petrol)" strokeOpacity=".1" />
+            </svg>
+            <HatchedCircle size={92} color="#08B9E6" className="pointer-events-none absolute left-[38%] top-[38%] opacity-25" />
+            <span className="absolute left-1/2 top-1/2 grid size-20 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full bg-brand-petrol text-center text-[11px] font-bold uppercase tracking-[0.1em] text-primary-foreground shadow-md">Território</span>
+          </div>
+          <ul className="mt-5 flex flex-wrap justify-center gap-2">
+            {ecosystemAxes.map(([label, color]) => (
+              <li key={label} className="inline-flex items-center gap-2 rounded-full border border-brand-petrol/10 bg-background/85 px-3 py-1.5 text-[11px] font-semibold leading-tight text-brand-ink shadow-sm backdrop-blur-sm sm:text-xs">
+                <span className={`size-2.5 shrink-0 rounded-full ${color}`} aria-hidden="true" />
+                {label}
+              </li>
+            ))}
+          </ul>
         </div>
+
       </div>
     </Section>
   );
