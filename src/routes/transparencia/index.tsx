@@ -31,9 +31,6 @@ const institutional = [
   ["Telefone", "(82) 99806-7374"],
 ] as const;
 
-const primaryBtn = "inline-flex rounded-full bg-brand-petrol px-5 py-2 text-sm font-bold text-primary-foreground transition hover:bg-brand-red";
-const ghostBtn = "inline-flex rounded-full border border-brand-petrol/25 px-5 py-2 text-sm font-bold text-brand-petrol transition hover:bg-brand-soft";
-
 function DocumentList({ category, color }: { category: string; color: string }) {
   const docs = useMemo(() => documents.filter((d) => d.category === category), [category]);
   if (docs.length === 0) {
