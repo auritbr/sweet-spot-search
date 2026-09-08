@@ -7,9 +7,9 @@ import { albums } from "@/data/site";
 export const Route = createFileRoute("/galeria/")({
   head: () => ({
     meta: [
-      { title: "Galeria — Cena Viva" },
-      { name: "description", content: "Fotografias das oficinas, apresentações e encontros do Ponto de Cultura Cena Viva." },
-      { property: "og:title", content: "Galeria — Cena Viva" },
+      { title: "Galeria — Associação Maggu" },
+      { name: "description", content: "Fotografias das oficinas, apresentações e encontros do Associação Sócio Cultural Maggu." },
+      { property: "og:title", content: "Galeria — Associação Maggu" },
       { property: "og:description", content: "Registros das nossas atividades." },
       { property: "og:url", content: "/galeria" },
     ],

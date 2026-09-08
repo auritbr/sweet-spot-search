@@ -9,10 +9,10 @@ import { site } from "@/data/site";
 export const Route = createFileRoute("/contato")({
   head: () => ({
     meta: [
-      { title: "Contato — Cena Viva" },
-      { name: "description", content: "Fale com o Ponto de Cultura Cena Viva: endereço, telefone, formulário e redes sociais." },
-      { property: "og:title", content: "Contato — Cena Viva" },
-      { property: "og:description", content: "Fale com o Ponto de Cultura." },
+      { title: "Contato — Associação Maggu" },
+      { name: "description", content: "Fale com o Associação Sócio Cultural Maggu: endereço, telefone, formulário e redes sociais." },
+      { property: "og:title", content: "Contato — Associação Maggu" },
+      { property: "og:description", content: "Fale com a Associação Sócio Cultural Maggu." },
       { property: "og:url", content: "/contato" },
     ],
     links: [{ rel: "canonical", href: "/contato" }],

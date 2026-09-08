@@ -13,7 +13,7 @@ export const Route = createFileRoute("/galeria/$slug")({
     const a = loaderData?.a;
     return {
       meta: [
-        { title: a ? `${a.title} (${a.year}) — Cena Viva` : "Álbum" },
+        { title: a ? `${a.title} (${a.year}) — Associação Maggu` : "Álbum" },
         { name: "description", content: a?.description ?? "" },
         { property: "og:title", content: a?.title ?? "Álbum" },
         ...(a ? [{ property: "og:image" as const, content: a.cover }] : []),
