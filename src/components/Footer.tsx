@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { Facebook, Instagram, MessageCircle, Youtube } from "lucide-react";
+import { Facebook, Instagram, Linkedin, MessageCircle, Youtube } from "lucide-react";
 import logoAsset from "@/assets/logo-maggu.png";
 import { HatchedCircle, QuarterCircle } from "@/components/Shapes";
 
@@ -29,10 +29,11 @@ const legal = [
 ];
 
 const socialLinks = [
-  { label: "YouTube", href: "https://youtube.com", icon: Youtube },
-  { label: "Facebook", href: "https://facebook.com", icon: Facebook },
-  { label: "Instagram", href: "https://instagram.com", icon: Instagram },
-  { label: "WhatsApp", href: "https://wa.me/5582998067374", icon: MessageCircle },
+  { label: "LinkedIn", ariaLabel: "LinkedIn da Associação Maggu", href: "https://www.linkedin.com/in/associacao-maggu-4516a8403/", icon: Linkedin },
+  { label: "YouTube", ariaLabel: "YouTube do Teatro Escola Maggu", href: "https://www.youtube.com/@TeatroEscolaMaggu", icon: Youtube },
+  { label: "Facebook", ariaLabel: "Facebook da Associação Maggu", href: "https://www.facebook.com/profile.php?id=61593631440664", icon: Facebook },
+  { label: "Instagram", ariaLabel: "Instagram da Associação Maggu", href: "https://www.instagram.com/associacaomaggu", icon: Instagram },
+  { label: "WhatsApp", ariaLabel: "WhatsApp da Associação Maggu", href: "https://wa.me/message/RGXHAG6IXRUYD1", icon: MessageCircle },
 ];
 
 function ColumnTitle({ children }: { children: React.ReactNode }) {
@@ -124,14 +125,14 @@ export function Footer() {
           <div>
             <ContactTitle>Conecte-se</ContactTitle>
             <div className="flex gap-1.5" aria-label="Redes sociais">
-              {socialLinks.map(({ label, href, icon: Icon }) => (
+              {socialLinks.map(({ label, ariaLabel, href, icon: Icon }) => (
                 <a
                   key={label}
                   href={href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  aria-label={label}
-                  title={label}
+                  aria-label={ariaLabel}
+                  title={ariaLabel}
                   className="inline-flex size-7 items-center justify-center rounded-full border border-primary-foreground/15 bg-primary-foreground/[0.08] text-primary-foreground/80 shadow-sm backdrop-blur-sm transition hover:border-brand-gold/40 hover:bg-primary-foreground/[0.14] hover:text-brand-gold"
                 >
                   <Icon className="size-3" aria-hidden="true" />
