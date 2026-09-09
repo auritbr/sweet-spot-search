@@ -90,10 +90,10 @@ export function FloatingButtons() {
       {/* Right cluster */}
       <div className="fixed right-3 md:right-4 bottom-4 md:bottom-6 z-40 flex flex-col gap-3" style={{ paddingBottom: "env(safe-area-inset-bottom)" }}>
         <a
-          href={`https://wa.me/${site.whatsapp}?text=${encodeURIComponent(site.whatsappMsg)}`}
+          href={site.social.whatsapp}
           target="_blank" rel="noopener noreferrer"
-          aria-label="Conversar no WhatsApp"
-          title="WhatsApp"
+          aria-label="WhatsApp da Associação Maggu"
+          title="WhatsApp da Associação Maggu"
           className="w-12 h-12 md:w-14 md:h-14 rounded-full bg-[#25D366] shadow-lg flex items-center justify-center hover:scale-105 transition"
         >
           <svg width="26" height="26" viewBox="0 0 24 24" fill="white"><path d="M20.5 3.5A11 11 0 0 0 3.6 17.2L2 22l4.9-1.6A11 11 0 1 0 20.5 3.5Zm-8.5 17a9 9 0 0 1-4.6-1.3l-.3-.2-2.9 1 1-2.8-.2-.3A9 9 0 1 1 12 20.5Zm5-6.5c-.3-.1-1.7-.8-2-1s-.5-.1-.7.1c-.2.3-.7.9-.9 1.1-.2.2-.3.2-.6.1a7 7 0 0 1-3.4-3c-.3-.5.3-.5.8-1.6.1-.2 0-.3 0-.5s-.7-1.6-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4a3.2 3.2 0 0 0-1 2.4 5.6 5.6 0 0 0 1.2 3 12.7 12.7 0 0 0 4.9 4.3c.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.7-.7 1.9-1.4.2-.7.2-1.2.1-1.4 0-.1-.2-.2-.5-.3Z"/></svg>

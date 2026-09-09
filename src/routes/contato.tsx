@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { ExternalLink, Facebook, Instagram, Mail, MapPin, MessageCircle, Phone, Share2, Youtube } from "lucide-react";
+import { ExternalLink, Facebook, Instagram, Linkedin, Mail, MapPin, MessageCircle, Phone, Share2, Youtube } from "lucide-react";
 import { useState } from "react";
 import { PageHero } from "@/components/PageHero";
 import { ArcThick, BrushStroke, DiamondsCluster, HatchedCircle, QuarterCircle } from "@/components/Shapes";
@@ -23,10 +23,11 @@ export const Route = createFileRoute("/contato")({
 });
 
 const socialLinks = [
-  { label: "Facebook", href: site.social.facebook, icon: Facebook },
-  { label: "Instagram", href: site.social.instagram, icon: Instagram },
-  { label: "YouTube", href: site.social.youtube, icon: Youtube },
-  { label: "WhatsApp", href: "https://wa.me/5582998067374", icon: MessageCircle },
+  { label: "LinkedIn", ariaLabel: "LinkedIn da Associação Maggu", href: site.social.linkedin, icon: Linkedin },
+  { label: "YouTube", ariaLabel: "YouTube do Teatro Escola Maggu", href: site.social.youtube, icon: Youtube },
+  { label: "Facebook", ariaLabel: "Facebook da Associação Maggu", href: site.social.facebook, icon: Facebook },
+  { label: "Instagram", ariaLabel: "Instagram da Associação Maggu", href: site.social.instagram, icon: Instagram },
+  { label: "WhatsApp", ariaLabel: "WhatsApp da Associação Maggu", href: site.social.whatsapp, icon: MessageCircle },
 ] as const;
 
 function Contato() {
@@ -156,8 +157,8 @@ function SocialLinksArea() {
       <h3 className="flex items-center gap-2 text-sm font-semibold text-brand-ink"><Share2 className="size-4 text-brand-red" aria-hidden="true" /> Redes sociais</h3>
       <p className="mt-1.5 text-sm leading-relaxed text-brand-gray">Acompanhe a Maggu e compartilhe nossas ações.</p>
       <div className="mt-4 flex flex-wrap items-center gap-2.5" aria-label="Redes sociais">
-        {socialLinks.map(({ label, href, icon: Icon }) => (
-          <a key={label} href={href} target="_blank" rel="noopener noreferrer" aria-label={label} title={label} className="group relative inline-flex size-11 items-center justify-center rounded-lg border border-brand-ink/15 bg-white/55 text-brand-ink shadow-sm backdrop-blur-sm transition hover:-translate-y-0.5 hover:border-brand-red/55 hover:bg-brand-red/10 hover:text-brand-red focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-red/50">
+        {socialLinks.map(({ label, ariaLabel, href, icon: Icon }) => (
+          <a key={label} href={href} target="_blank" rel="noopener noreferrer" aria-label={ariaLabel} title={ariaLabel} className="group relative inline-flex size-11 items-center justify-center rounded-lg border border-brand-ink/15 bg-white/55 text-brand-ink shadow-sm backdrop-blur-sm transition hover:-translate-y-0.5 hover:border-brand-red/55 hover:bg-brand-red/10 hover:text-brand-red focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-red/50">
             <Icon className="size-[18px]" aria-hidden="true" />
             <span className="pointer-events-none absolute -bottom-8 left-1/2 z-10 -translate-x-1/2 whitespace-nowrap rounded bg-brand-ink px-2 py-1 text-[10px] font-medium text-primary-foreground opacity-0 transition-opacity group-hover:opacity-100 group-focus-visible:opacity-100">{label}</span>
           </a>

@@ -125,14 +125,14 @@ export function Footer() {
           <div>
             <ContactTitle>Conecte-se</ContactTitle>
             <div className="flex gap-1.5" aria-label="Redes sociais">
-              {socialLinks.map(({ label, href, icon: Icon }) => (
+              {socialLinks.map(({ label, ariaLabel, href, icon: Icon }) => (
                 <a
                   key={label}
                   href={href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  aria-label={label}
-                  title={label}
+                  aria-label={ariaLabel}
+                  title={ariaLabel}
                   className="inline-flex size-7 items-center justify-center rounded-full border border-primary-foreground/15 bg-primary-foreground/[0.08] text-primary-foreground/80 shadow-sm backdrop-blur-sm transition hover:border-brand-gold/40 hover:bg-primary-foreground/[0.14] hover:text-brand-gold"
                 >
                   <Icon className="size-3" aria-hidden="true" />
