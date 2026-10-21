@@ -25,7 +25,10 @@ const navegacao = [
 const legal = [
   { label: "Política de Privacidade", to: "/privacidade" },
   { label: "Termos de Uso", to: "/termos-de-uso" },
+  { label: "Política de Salvaguarda", to: "/politica-de-salvaguarda" },
+  { label: "Notas e Pronunciamentos", to: "/notas-pronunciamentos" },
   { label: "Canal de Denúncia", to: "/canal-de-denuncias" },
+  { label: "Apoiadores e Redes", to: "/apoiadores-redes" },
 ];
 
 const socialLinks = [

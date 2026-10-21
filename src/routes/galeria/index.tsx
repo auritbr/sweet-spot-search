@@ -3,6 +3,9 @@ import { useEffect, useMemo, useState } from "react";
 import { PageHero, Section } from "@/components/PageHero";
 import { BrushStroke, HatchedCircle, Triangle } from "@/components/Shapes";
 import { albums } from "@/data/site";
+import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
+import { Button } from "@/components/ui/button";
+import { galleryMedia, publishedMedia } from "@/data/galeria-media";
 
 export const Route = createFileRoute("/galeria/")({
   head: () => ({
@@ -12,6 +15,10 @@ export const Route = createFileRoute("/galeria/")({
       { property: "og:title", content: "Galeria — Associação Maggu" },
       { property: "og:description", content: "Registros das nossas atividades." },
       { property: "og:url", content: "/galeria" },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
+      { property: "og:image", content: "https://images.unsplash.com/photo-1503095396549-807759245b35?auto=format&fit=crop&w=1200&h=630&q=75" },
+      { name: "twitter:image", content: "https://images.unsplash.com/photo-1503095396549-807759245b35?auto=format&fit=crop&w=1200&h=630&q=75" },
     ],
     links: [{ rel: "canonical", href: "/galeria" }],
   }),
@@ -27,6 +34,7 @@ function Galeria() {
   const [openPhoto, setOpenPhoto] = useState<OpenPhoto | null>(null);
 
   const list = albums.filter((a) => a.year === year);
+  const media = publishedMedia(galleryMedia);
 
   useEffect(() => {
     if (!openPhoto) return;
@@ -71,6 +79,12 @@ function Galeria() {
         <Triangle color="#FFB400" size={60} className="absolute -top-4 -left-4 opacity-80" rotate={20} />
 
         <div className="container-x">
+          <Tabs defaultValue="fotos" onValueChange={() => setOpenPhoto(null)}>
+            <TabsList aria-label="Tipo de conteúdo" className="mb-7 h-auto max-w-full flex-wrap gap-1 rounded-full bg-brand-soft p-1">
+              <TabsTrigger value="fotos" className="rounded-full px-4 py-2 data-[state=active]:bg-brand-red data-[state=active]:text-primary-foreground">Fotos</TabsTrigger>
+              <TabsTrigger value="podcast-videos" className="rounded-full px-4 py-2 data-[state=active]:bg-brand-red data-[state=active]:text-primary-foreground">Podcast / Vídeos</TabsTrigger>
+            </TabsList>
+            <TabsContent value="fotos">
           {/* Year selector */}
           <div className="flex flex-wrap items-center justify-between gap-4 mb-8">
             <div>
@@ -139,6 +153,22 @@ function Galeria() {
               </section>
             ))}
           </div>
+            </TabsContent>
+            <TabsContent value="podcast-videos">
+              {media.length ? <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+                {media.map((item) => <article key={item.id} className="overflow-hidden rounded-lg border border-brand-petrol/10 bg-card">
+                  <img src={item.thumbnail} alt={item.alt} loading="lazy" className="aspect-video w-full object-cover" />
+                  <div className="p-5">
+                    <p className="text-xs font-semibold text-brand-red">{item.type}</p>
+                    <h2 className="mt-2 text-lg font-semibold leading-snug">{item.title}</h2>
+                    {item.date && <time dateTime={item.date} className="mt-2 block text-xs text-brand-gray">{new Intl.DateTimeFormat("pt-BR", { timeZone: "UTC" }).format(new Date(item.date))}</time>}
+                    {item.description && <p className="mt-3 text-sm leading-relaxed text-brand-gray">{item.description}</p>}
+                    <Button asChild size="sm" className="mt-4 rounded-full"><a href={item.url} target="_blank" rel="noopener noreferrer" aria-label={`${item.type === "Podcast" ? "Ouvir" : "Assistir"}: ${item.title}`}>{item.type === "Podcast" ? "Ouvir" : "Assistir"}</a></Button>
+                  </div>
+                </article>)}
+              </div> : <p className="border-y border-brand-petrol/10 py-8 text-sm leading-relaxed text-brand-gray">Nenhum podcast ou vídeo publicado nesta categoria neste momento.</p>}
+            </TabsContent>
+          </Tabs>
         </div>
       </Section>
 
