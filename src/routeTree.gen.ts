@@ -12,14 +12,17 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as TransparenciaRouteImport } from './routes/transparencia'
 import { Route as TermosDeUsoRouteImport } from './routes/termos-de-uso'
 import { Route as PrivacidadeRouteImport } from './routes/privacidade'
+import { Route as PoliticaDeSalvaguardaRouteImport } from './routes/politica-de-salvaguarda'
 import { Route as ParticipeRouteImport } from './routes/participe'
 import { Route as OdsMaggu2030RouteImport } from './routes/ods-maggu-2030'
+import { Route as NotasPronunciamentosRouteImport } from './routes/notas-pronunciamentos'
 import { Route as ImprensaRouteImport } from './routes/imprensa'
 import { Route as ImpactoMemoriaRouteImport } from './routes/impacto-memoria'
 import { Route as EquipeRouteImport } from './routes/equipe'
 import { Route as EcossistemaRouteImport } from './routes/ecossistema'
 import { Route as ContatoRouteImport } from './routes/contato'
 import { Route as CanalDeDenunciasRouteImport } from './routes/canal-de-denuncias'
+import { Route as ApoiadoresRedesRouteImport } from './routes/apoiadores-redes'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as TransparenciaIndexRouteImport } from './routes/transparencia/index'
 import { Route as QuemSomosIndexRouteImport } from './routes/quem-somos/index'
@@ -49,6 +52,11 @@ const PrivacidadeRoute = PrivacidadeRouteImport.update({
   path: '/privacidade',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PoliticaDeSalvaguardaRoute = PoliticaDeSalvaguardaRouteImport.update({
+  id: '/politica-de-salvaguarda',
+  path: '/politica-de-salvaguarda',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ParticipeRoute = ParticipeRouteImport.update({
   id: '/participe',
   path: '/participe',
@@ -57,6 +65,11 @@ const ParticipeRoute = ParticipeRouteImport.update({
 const OdsMaggu2030Route = OdsMaggu2030RouteImport.update({
   id: '/ods-maggu-2030',
   path: '/ods-maggu-2030',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NotasPronunciamentosRoute = NotasPronunciamentosRouteImport.update({
+  id: '/notas-pronunciamentos',
+  path: '/notas-pronunciamentos',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ImprensaRoute = ImprensaRouteImport.update({
@@ -87,6 +100,11 @@ const ContatoRoute = ContatoRouteImport.update({
 const CanalDeDenunciasRoute = CanalDeDenunciasRouteImport.update({
   id: '/canal-de-denuncias',
   path: '/canal-de-denuncias',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApoiadoresRedesRoute = ApoiadoresRedesRouteImport.update({
+  id: '/apoiadores-redes',
+  path: '/apoiadores-redes',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndexRoute = IndexRouteImport.update({
@@ -158,14 +176,17 @@ const AgendaSlugRoute = AgendaSlugRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/apoiadores-redes': typeof ApoiadoresRedesRoute
   '/canal-de-denuncias': typeof CanalDeDenunciasRoute
   '/contato': typeof ContatoRoute
   '/ecossistema': typeof EcossistemaRoute
   '/equipe': typeof EquipeRoute
   '/impacto-memoria': typeof ImpactoMemoriaRoute
   '/imprensa': typeof ImprensaRoute
+  '/notas-pronunciamentos': typeof NotasPronunciamentosRoute
   '/ods-maggu-2030': typeof OdsMaggu2030Route
   '/participe': typeof ParticipeRoute
+  '/politica-de-salvaguarda': typeof PoliticaDeSalvaguardaRoute
   '/privacidade': typeof PrivacidadeRoute
   '/termos-de-uso': typeof TermosDeUsoRoute
   '/transparencia': typeof TransparenciaRouteWithChildren
@@ -184,14 +205,17 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/apoiadores-redes': typeof ApoiadoresRedesRoute
   '/canal-de-denuncias': typeof CanalDeDenunciasRoute
   '/contato': typeof ContatoRoute
   '/ecossistema': typeof EcossistemaRoute
   '/equipe': typeof EquipeRoute
   '/impacto-memoria': typeof ImpactoMemoriaRoute
   '/imprensa': typeof ImprensaRoute
+  '/notas-pronunciamentos': typeof NotasPronunciamentosRoute
   '/ods-maggu-2030': typeof OdsMaggu2030Route
   '/participe': typeof ParticipeRoute
+  '/politica-de-salvaguarda': typeof PoliticaDeSalvaguardaRoute
   '/privacidade': typeof PrivacidadeRoute
   '/termos-de-uso': typeof TermosDeUsoRoute
   '/agenda/$slug': typeof AgendaSlugRoute
@@ -210,14 +234,17 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/apoiadores-redes': typeof ApoiadoresRedesRoute
   '/canal-de-denuncias': typeof CanalDeDenunciasRoute
   '/contato': typeof ContatoRoute
   '/ecossistema': typeof EcossistemaRoute
   '/equipe': typeof EquipeRoute
   '/impacto-memoria': typeof ImpactoMemoriaRoute
   '/imprensa': typeof ImprensaRoute
+  '/notas-pronunciamentos': typeof NotasPronunciamentosRoute
   '/ods-maggu-2030': typeof OdsMaggu2030Route
   '/participe': typeof ParticipeRoute
+  '/politica-de-salvaguarda': typeof PoliticaDeSalvaguardaRoute
   '/privacidade': typeof PrivacidadeRoute
   '/termos-de-uso': typeof TermosDeUsoRoute
   '/transparencia': typeof TransparenciaRouteWithChildren
@@ -238,14 +265,17 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/apoiadores-redes'
     | '/canal-de-denuncias'
     | '/contato'
     | '/ecossistema'
     | '/equipe'
     | '/impacto-memoria'
     | '/imprensa'
+    | '/notas-pronunciamentos'
     | '/ods-maggu-2030'
     | '/participe'
+    | '/politica-de-salvaguarda'
     | '/privacidade'
     | '/termos-de-uso'
     | '/transparencia'
@@ -264,14 +294,17 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/apoiadores-redes'
     | '/canal-de-denuncias'
     | '/contato'
     | '/ecossistema'
     | '/equipe'
     | '/impacto-memoria'
     | '/imprensa'
+    | '/notas-pronunciamentos'
     | '/ods-maggu-2030'
     | '/participe'
+    | '/politica-de-salvaguarda'
     | '/privacidade'
     | '/termos-de-uso'
     | '/agenda/$slug'
@@ -289,14 +322,17 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/apoiadores-redes'
     | '/canal-de-denuncias'
     | '/contato'
     | '/ecossistema'
     | '/equipe'
     | '/impacto-memoria'
     | '/imprensa'
+    | '/notas-pronunciamentos'
     | '/ods-maggu-2030'
     | '/participe'
+    | '/politica-de-salvaguarda'
     | '/privacidade'
     | '/termos-de-uso'
     | '/transparencia'
@@ -316,14 +352,17 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ApoiadoresRedesRoute: typeof ApoiadoresRedesRoute
   CanalDeDenunciasRoute: typeof CanalDeDenunciasRoute
   ContatoRoute: typeof ContatoRoute
   EcossistemaRoute: typeof EcossistemaRoute
   EquipeRoute: typeof EquipeRoute
   ImpactoMemoriaRoute: typeof ImpactoMemoriaRoute
   ImprensaRoute: typeof ImprensaRoute
+  NotasPronunciamentosRoute: typeof NotasPronunciamentosRoute
   OdsMaggu2030Route: typeof OdsMaggu2030Route
   ParticipeRoute: typeof ParticipeRoute
+  PoliticaDeSalvaguardaRoute: typeof PoliticaDeSalvaguardaRoute
   PrivacidadeRoute: typeof PrivacidadeRoute
   TermosDeUsoRoute: typeof TermosDeUsoRoute
   TransparenciaRoute: typeof TransparenciaRouteWithChildren
@@ -362,6 +401,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PrivacidadeRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/politica-de-salvaguarda': {
+      id: '/politica-de-salvaguarda'
+      path: '/politica-de-salvaguarda'
+      fullPath: '/politica-de-salvaguarda'
+      preLoaderRoute: typeof PoliticaDeSalvaguardaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/participe': {
       id: '/participe'
       path: '/participe'
@@ -374,6 +420,13 @@ declare module '@tanstack/react-router' {
       path: '/ods-maggu-2030'
       fullPath: '/ods-maggu-2030'
       preLoaderRoute: typeof OdsMaggu2030RouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/notas-pronunciamentos': {
+      id: '/notas-pronunciamentos'
+      path: '/notas-pronunciamentos'
+      fullPath: '/notas-pronunciamentos'
+      preLoaderRoute: typeof NotasPronunciamentosRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/imprensa': {
@@ -416,6 +469,13 @@ declare module '@tanstack/react-router' {
       path: '/canal-de-denuncias'
       fullPath: '/canal-de-denuncias'
       preLoaderRoute: typeof CanalDeDenunciasRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/apoiadores-redes': {
+      id: '/apoiadores-redes'
+      path: '/apoiadores-redes'
+      fullPath: '/apoiadores-redes'
+      preLoaderRoute: typeof ApoiadoresRedesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/': {
@@ -529,14 +589,17 @@ const TransparenciaRouteWithChildren = TransparenciaRoute._addFileChildren(
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ApoiadoresRedesRoute: ApoiadoresRedesRoute,
   CanalDeDenunciasRoute: CanalDeDenunciasRoute,
   ContatoRoute: ContatoRoute,
   EcossistemaRoute: EcossistemaRoute,
   EquipeRoute: EquipeRoute,
   ImpactoMemoriaRoute: ImpactoMemoriaRoute,
   ImprensaRoute: ImprensaRoute,
+  NotasPronunciamentosRoute: NotasPronunciamentosRoute,
   OdsMaggu2030Route: OdsMaggu2030Route,
   ParticipeRoute: ParticipeRoute,
+  PoliticaDeSalvaguardaRoute: PoliticaDeSalvaguardaRoute,
   PrivacidadeRoute: PrivacidadeRoute,
   TermosDeUsoRoute: TermosDeUsoRoute,
   TransparenciaRoute: TransparenciaRouteWithChildren,
