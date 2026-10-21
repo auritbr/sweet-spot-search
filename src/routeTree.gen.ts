@@ -9,97 +9,37 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as TransparenciaRouteImport } from './routes/transparencia'
-import { Route as TermosDeUsoRouteImport } from './routes/termos-de-uso'
-import { Route as PrivacidadeRouteImport } from './routes/privacidade'
-import { Route as PoliticaDeSalvaguardaRouteImport } from './routes/politica-de-salvaguarda'
-import { Route as ParticipeRouteImport } from './routes/participe'
-import { Route as OdsMaggu2030RouteImport } from './routes/ods-maggu-2030'
-import { Route as NotasPronunciamentosRouteImport } from './routes/notas-pronunciamentos'
-import { Route as ImprensaRouteImport } from './routes/imprensa'
-import { Route as ImpactoMemoriaRouteImport } from './routes/impacto-memoria'
-import { Route as EquipeRouteImport } from './routes/equipe'
-import { Route as EcossistemaRouteImport } from './routes/ecossistema'
-import { Route as ContatoRouteImport } from './routes/contato'
-import { Route as CanalDeDenunciasRouteImport } from './routes/canal-de-denuncias'
-import { Route as ApoiadoresRedesRouteImport } from './routes/apoiadores-redes'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as TransparenciaIndexRouteImport } from './routes/transparencia/index'
-import { Route as QuemSomosIndexRouteImport } from './routes/quem-somos/index'
-import { Route as ProjetosIndexRouteImport } from './routes/projetos/index'
-import { Route as NoticiasIndexRouteImport } from './routes/noticias/index'
-import { Route as GaleriaIndexRouteImport } from './routes/galeria/index'
+import { Route as ApoiadoresRedesRouteImport } from './routes/apoiadores-redes'
+import { Route as CanalDeDenunciasRouteImport } from './routes/canal-de-denuncias'
+import { Route as ContatoRouteImport } from './routes/contato'
+import { Route as EcossistemaRouteImport } from './routes/ecossistema'
+import { Route as EquipeRouteImport } from './routes/equipe'
+import { Route as ImpactoMemoriaRouteImport } from './routes/impacto-memoria'
+import { Route as ImprensaRouteImport } from './routes/imprensa'
+import { Route as NotasPronunciamentosRouteImport } from './routes/notas-pronunciamentos'
+import { Route as OdsMaggu2030RouteImport } from './routes/ods-maggu-2030'
+import { Route as ParticipeRouteImport } from './routes/participe'
+import { Route as PoliticaDeSalvaguardaRouteImport } from './routes/politica-de-salvaguarda'
+import { Route as PrivacidadeRouteImport } from './routes/privacidade'
+import { Route as TermosDeUsoRouteImport } from './routes/termos-de-uso'
+import { Route as TransparenciaRouteImport } from './routes/transparencia'
 import { Route as AgendaIndexRouteImport } from './routes/agenda/index'
-import { Route as TransparenciaGovernancaIntegridadeRouteImport } from './routes/transparencia/governanca-integridade'
-import { Route as QuemSomosTerritorioRouteImport } from './routes/quem-somos/territorio'
-import { Route as ProjetosSlugRouteImport } from './routes/projetos/$slug'
-import { Route as NoticiasSlugRouteImport } from './routes/noticias/$slug'
-import { Route as GaleriaSlugRouteImport } from './routes/galeria/$slug'
 import { Route as AgendaSlugRouteImport } from './routes/agenda/$slug'
+import { Route as GaleriaIndexRouteImport } from './routes/galeria/index'
+import { Route as GaleriaSlugRouteImport } from './routes/galeria/$slug'
+import { Route as NoticiasIndexRouteImport } from './routes/noticias/index'
+import { Route as NoticiasSlugRouteImport } from './routes/noticias/$slug'
+import { Route as ProjetosIndexRouteImport } from './routes/projetos/index'
+import { Route as ProjetosSlugRouteImport } from './routes/projetos/$slug'
+import { Route as QuemSomosIndexRouteImport } from './routes/quem-somos/index'
+import { Route as QuemSomosTerritorioRouteImport } from './routes/quem-somos/territorio'
+import { Route as TransparenciaIndexRouteImport } from './routes/transparencia/index'
+import { Route as TransparenciaGovernancaIntegridadeRouteImport } from './routes/transparencia/governanca-integridade'
 
-const TransparenciaRoute = TransparenciaRouteImport.update({
-  id: '/transparencia',
-  path: '/transparencia',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const TermosDeUsoRoute = TermosDeUsoRouteImport.update({
-  id: '/termos-de-uso',
-  path: '/termos-de-uso',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const PrivacidadeRoute = PrivacidadeRouteImport.update({
-  id: '/privacidade',
-  path: '/privacidade',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const PoliticaDeSalvaguardaRoute = PoliticaDeSalvaguardaRouteImport.update({
-  id: '/politica-de-salvaguarda',
-  path: '/politica-de-salvaguarda',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ParticipeRoute = ParticipeRouteImport.update({
-  id: '/participe',
-  path: '/participe',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const OdsMaggu2030Route = OdsMaggu2030RouteImport.update({
-  id: '/ods-maggu-2030',
-  path: '/ods-maggu-2030',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const NotasPronunciamentosRoute = NotasPronunciamentosRouteImport.update({
-  id: '/notas-pronunciamentos',
-  path: '/notas-pronunciamentos',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ImprensaRoute = ImprensaRouteImport.update({
-  id: '/imprensa',
-  path: '/imprensa',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ImpactoMemoriaRoute = ImpactoMemoriaRouteImport.update({
-  id: '/impacto-memoria',
-  path: '/impacto-memoria',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const EquipeRoute = EquipeRouteImport.update({
-  id: '/equipe',
-  path: '/equipe',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const EcossistemaRoute = EcossistemaRouteImport.update({
-  id: '/ecossistema',
-  path: '/ecossistema',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ContatoRoute = ContatoRouteImport.update({
-  id: '/contato',
-  path: '/contato',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const CanalDeDenunciasRoute = CanalDeDenunciasRouteImport.update({
-  id: '/canal-de-denuncias',
-  path: '/canal-de-denuncias',
+const IndexRoute = IndexRouteImport.update({
+  id: '/',
+  path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ApoiadoresRedesRoute = ApoiadoresRedesRouteImport.update({
@@ -107,34 +47,69 @@ const ApoiadoresRedesRoute = ApoiadoresRedesRouteImport.update({
   path: '/apoiadores-redes',
   getParentRoute: () => rootRouteImport,
 } as any)
-const IndexRoute = IndexRouteImport.update({
-  id: '/',
-  path: '/',
+const CanalDeDenunciasRoute = CanalDeDenunciasRouteImport.update({
+  id: '/canal-de-denuncias',
+  path: '/canal-de-denuncias',
   getParentRoute: () => rootRouteImport,
 } as any)
-const TransparenciaIndexRoute = TransparenciaIndexRouteImport.update({
-  id: '/',
-  path: '/',
-  getParentRoute: () => TransparenciaRoute,
-} as any)
-const QuemSomosIndexRoute = QuemSomosIndexRouteImport.update({
-  id: '/quem-somos/',
-  path: '/quem-somos/',
+const ContatoRoute = ContatoRouteImport.update({
+  id: '/contato',
+  path: '/contato',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ProjetosIndexRoute = ProjetosIndexRouteImport.update({
-  id: '/projetos/',
-  path: '/projetos/',
+const EcossistemaRoute = EcossistemaRouteImport.update({
+  id: '/ecossistema',
+  path: '/ecossistema',
   getParentRoute: () => rootRouteImport,
 } as any)
-const NoticiasIndexRoute = NoticiasIndexRouteImport.update({
-  id: '/noticias/',
-  path: '/noticias/',
+const EquipeRoute = EquipeRouteImport.update({
+  id: '/equipe',
+  path: '/equipe',
   getParentRoute: () => rootRouteImport,
 } as any)
-const GaleriaIndexRoute = GaleriaIndexRouteImport.update({
-  id: '/galeria/',
-  path: '/galeria/',
+const ImpactoMemoriaRoute = ImpactoMemoriaRouteImport.update({
+  id: '/impacto-memoria',
+  path: '/impacto-memoria',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ImprensaRoute = ImprensaRouteImport.update({
+  id: '/imprensa',
+  path: '/imprensa',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NotasPronunciamentosRoute = NotasPronunciamentosRouteImport.update({
+  id: '/notas-pronunciamentos',
+  path: '/notas-pronunciamentos',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OdsMaggu2030Route = OdsMaggu2030RouteImport.update({
+  id: '/ods-maggu-2030',
+  path: '/ods-maggu-2030',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ParticipeRoute = ParticipeRouteImport.update({
+  id: '/participe',
+  path: '/participe',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PoliticaDeSalvaguardaRoute = PoliticaDeSalvaguardaRouteImport.update({
+  id: '/politica-de-salvaguarda',
+  path: '/politica-de-salvaguarda',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PrivacidadeRoute = PrivacidadeRouteImport.update({
+  id: '/privacidade',
+  path: '/privacidade',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TermosDeUsoRoute = TermosDeUsoRouteImport.update({
+  id: '/termos-de-uso',
+  path: '/termos-de-uso',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TransparenciaRoute = TransparenciaRouteImport.update({
+  id: '/transparencia',
+  path: '/transparencia',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AgendaIndexRoute = AgendaIndexRouteImport.update({
@@ -142,25 +117,14 @@ const AgendaIndexRoute = AgendaIndexRouteImport.update({
   path: '/agenda/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const TransparenciaGovernancaIntegridadeRoute =
-  TransparenciaGovernancaIntegridadeRouteImport.update({
-    id: '/governanca-integridade',
-    path: '/governanca-integridade',
-    getParentRoute: () => TransparenciaRoute,
-  } as any)
-const QuemSomosTerritorioRoute = QuemSomosTerritorioRouteImport.update({
-  id: '/quem-somos/territorio',
-  path: '/quem-somos/territorio',
+const AgendaSlugRoute = AgendaSlugRouteImport.update({
+  id: '/agenda/$slug',
+  path: '/agenda/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ProjetosSlugRoute = ProjetosSlugRouteImport.update({
-  id: '/projetos/$slug',
-  path: '/projetos/$slug',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const NoticiasSlugRoute = NoticiasSlugRouteImport.update({
-  id: '/noticias/$slug',
-  path: '/noticias/$slug',
+const GaleriaIndexRoute = GaleriaIndexRouteImport.update({
+  id: '/galeria/',
+  path: '/galeria/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const GaleriaSlugRoute = GaleriaSlugRouteImport.update({
@@ -168,11 +132,47 @@ const GaleriaSlugRoute = GaleriaSlugRouteImport.update({
   path: '/galeria/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
-const AgendaSlugRoute = AgendaSlugRouteImport.update({
-  id: '/agenda/$slug',
-  path: '/agenda/$slug',
+const NoticiasIndexRoute = NoticiasIndexRouteImport.update({
+  id: '/noticias/',
+  path: '/noticias/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const NoticiasSlugRoute = NoticiasSlugRouteImport.update({
+  id: '/noticias/$slug',
+  path: '/noticias/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProjetosIndexRoute = ProjetosIndexRouteImport.update({
+  id: '/projetos/',
+  path: '/projetos/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProjetosSlugRoute = ProjetosSlugRouteImport.update({
+  id: '/projetos/$slug',
+  path: '/projetos/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const QuemSomosIndexRoute = QuemSomosIndexRouteImport.update({
+  id: '/quem-somos/',
+  path: '/quem-somos/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const QuemSomosTerritorioRoute = QuemSomosTerritorioRouteImport.update({
+  id: '/quem-somos/territorio',
+  path: '/quem-somos/territorio',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TransparenciaIndexRoute = TransparenciaIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => TransparenciaRoute,
+} as any)
+const TransparenciaGovernancaIntegridadeRoute =
+  TransparenciaGovernancaIntegridadeRouteImport.update({
+    id: '/governanca-integridade',
+    path: '/governanca-integridade',
+    getParentRoute: () => TransparenciaRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -380,95 +380,11 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/transparencia': {
-      id: '/transparencia'
-      path: '/transparencia'
-      fullPath: '/transparencia'
-      preLoaderRoute: typeof TransparenciaRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/termos-de-uso': {
-      id: '/termos-de-uso'
-      path: '/termos-de-uso'
-      fullPath: '/termos-de-uso'
-      preLoaderRoute: typeof TermosDeUsoRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/privacidade': {
-      id: '/privacidade'
-      path: '/privacidade'
-      fullPath: '/privacidade'
-      preLoaderRoute: typeof PrivacidadeRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/politica-de-salvaguarda': {
-      id: '/politica-de-salvaguarda'
-      path: '/politica-de-salvaguarda'
-      fullPath: '/politica-de-salvaguarda'
-      preLoaderRoute: typeof PoliticaDeSalvaguardaRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/participe': {
-      id: '/participe'
-      path: '/participe'
-      fullPath: '/participe'
-      preLoaderRoute: typeof ParticipeRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/ods-maggu-2030': {
-      id: '/ods-maggu-2030'
-      path: '/ods-maggu-2030'
-      fullPath: '/ods-maggu-2030'
-      preLoaderRoute: typeof OdsMaggu2030RouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/notas-pronunciamentos': {
-      id: '/notas-pronunciamentos'
-      path: '/notas-pronunciamentos'
-      fullPath: '/notas-pronunciamentos'
-      preLoaderRoute: typeof NotasPronunciamentosRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/imprensa': {
-      id: '/imprensa'
-      path: '/imprensa'
-      fullPath: '/imprensa'
-      preLoaderRoute: typeof ImprensaRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/impacto-memoria': {
-      id: '/impacto-memoria'
-      path: '/impacto-memoria'
-      fullPath: '/impacto-memoria'
-      preLoaderRoute: typeof ImpactoMemoriaRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/equipe': {
-      id: '/equipe'
-      path: '/equipe'
-      fullPath: '/equipe'
-      preLoaderRoute: typeof EquipeRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/ecossistema': {
-      id: '/ecossistema'
-      path: '/ecossistema'
-      fullPath: '/ecossistema'
-      preLoaderRoute: typeof EcossistemaRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/contato': {
-      id: '/contato'
-      path: '/contato'
-      fullPath: '/contato'
-      preLoaderRoute: typeof ContatoRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/canal-de-denuncias': {
-      id: '/canal-de-denuncias'
-      path: '/canal-de-denuncias'
-      fullPath: '/canal-de-denuncias'
-      preLoaderRoute: typeof CanalDeDenunciasRouteImport
+    '/': {
+      id: '/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/apoiadores-redes': {
@@ -478,46 +394,95 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ApoiadoresRedesRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/': {
-      id: '/'
-      path: '/'
-      fullPath: '/'
-      preLoaderRoute: typeof IndexRouteImport
+    '/canal-de-denuncias': {
+      id: '/canal-de-denuncias'
+      path: '/canal-de-denuncias'
+      fullPath: '/canal-de-denuncias'
+      preLoaderRoute: typeof CanalDeDenunciasRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/transparencia/': {
-      id: '/transparencia/'
-      path: '/'
-      fullPath: '/transparencia/'
-      preLoaderRoute: typeof TransparenciaIndexRouteImport
-      parentRoute: typeof TransparenciaRoute
-    }
-    '/quem-somos/': {
-      id: '/quem-somos/'
-      path: '/quem-somos'
-      fullPath: '/quem-somos/'
-      preLoaderRoute: typeof QuemSomosIndexRouteImport
+    '/contato': {
+      id: '/contato'
+      path: '/contato'
+      fullPath: '/contato'
+      preLoaderRoute: typeof ContatoRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/projetos/': {
-      id: '/projetos/'
-      path: '/projetos'
-      fullPath: '/projetos/'
-      preLoaderRoute: typeof ProjetosIndexRouteImport
+    '/ecossistema': {
+      id: '/ecossistema'
+      path: '/ecossistema'
+      fullPath: '/ecossistema'
+      preLoaderRoute: typeof EcossistemaRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/noticias/': {
-      id: '/noticias/'
-      path: '/noticias'
-      fullPath: '/noticias/'
-      preLoaderRoute: typeof NoticiasIndexRouteImport
+    '/equipe': {
+      id: '/equipe'
+      path: '/equipe'
+      fullPath: '/equipe'
+      preLoaderRoute: typeof EquipeRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/galeria/': {
-      id: '/galeria/'
-      path: '/galeria'
-      fullPath: '/galeria/'
-      preLoaderRoute: typeof GaleriaIndexRouteImport
+    '/impacto-memoria': {
+      id: '/impacto-memoria'
+      path: '/impacto-memoria'
+      fullPath: '/impacto-memoria'
+      preLoaderRoute: typeof ImpactoMemoriaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/imprensa': {
+      id: '/imprensa'
+      path: '/imprensa'
+      fullPath: '/imprensa'
+      preLoaderRoute: typeof ImprensaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/notas-pronunciamentos': {
+      id: '/notas-pronunciamentos'
+      path: '/notas-pronunciamentos'
+      fullPath: '/notas-pronunciamentos'
+      preLoaderRoute: typeof NotasPronunciamentosRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/ods-maggu-2030': {
+      id: '/ods-maggu-2030'
+      path: '/ods-maggu-2030'
+      fullPath: '/ods-maggu-2030'
+      preLoaderRoute: typeof OdsMaggu2030RouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/participe': {
+      id: '/participe'
+      path: '/participe'
+      fullPath: '/participe'
+      preLoaderRoute: typeof ParticipeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/politica-de-salvaguarda': {
+      id: '/politica-de-salvaguarda'
+      path: '/politica-de-salvaguarda'
+      fullPath: '/politica-de-salvaguarda'
+      preLoaderRoute: typeof PoliticaDeSalvaguardaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/privacidade': {
+      id: '/privacidade'
+      path: '/privacidade'
+      fullPath: '/privacidade'
+      preLoaderRoute: typeof PrivacidadeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/termos-de-uso': {
+      id: '/termos-de-uso'
+      path: '/termos-de-uso'
+      fullPath: '/termos-de-uso'
+      preLoaderRoute: typeof TermosDeUsoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/transparencia': {
+      id: '/transparencia'
+      path: '/transparencia'
+      fullPath: '/transparencia'
+      preLoaderRoute: typeof TransparenciaRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/agenda/': {
@@ -527,32 +492,18 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AgendaIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/transparencia/governanca-integridade': {
-      id: '/transparencia/governanca-integridade'
-      path: '/governanca-integridade'
-      fullPath: '/transparencia/governanca-integridade'
-      preLoaderRoute: typeof TransparenciaGovernancaIntegridadeRouteImport
-      parentRoute: typeof TransparenciaRoute
-    }
-    '/quem-somos/territorio': {
-      id: '/quem-somos/territorio'
-      path: '/quem-somos/territorio'
-      fullPath: '/quem-somos/territorio'
-      preLoaderRoute: typeof QuemSomosTerritorioRouteImport
+    '/agenda/$slug': {
+      id: '/agenda/$slug'
+      path: '/agenda/$slug'
+      fullPath: '/agenda/$slug'
+      preLoaderRoute: typeof AgendaSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/projetos/$slug': {
-      id: '/projetos/$slug'
-      path: '/projetos/$slug'
-      fullPath: '/projetos/$slug'
-      preLoaderRoute: typeof ProjetosSlugRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/noticias/$slug': {
-      id: '/noticias/$slug'
-      path: '/noticias/$slug'
-      fullPath: '/noticias/$slug'
-      preLoaderRoute: typeof NoticiasSlugRouteImport
+    '/galeria/': {
+      id: '/galeria/'
+      path: '/galeria'
+      fullPath: '/galeria/'
+      preLoaderRoute: typeof GaleriaIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/galeria/$slug': {
@@ -562,12 +513,61 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof GaleriaSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/agenda/$slug': {
-      id: '/agenda/$slug'
-      path: '/agenda/$slug'
-      fullPath: '/agenda/$slug'
-      preLoaderRoute: typeof AgendaSlugRouteImport
+    '/noticias/': {
+      id: '/noticias/'
+      path: '/noticias'
+      fullPath: '/noticias/'
+      preLoaderRoute: typeof NoticiasIndexRouteImport
       parentRoute: typeof rootRouteImport
+    }
+    '/noticias/$slug': {
+      id: '/noticias/$slug'
+      path: '/noticias/$slug'
+      fullPath: '/noticias/$slug'
+      preLoaderRoute: typeof NoticiasSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/projetos/': {
+      id: '/projetos/'
+      path: '/projetos'
+      fullPath: '/projetos/'
+      preLoaderRoute: typeof ProjetosIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/projetos/$slug': {
+      id: '/projetos/$slug'
+      path: '/projetos/$slug'
+      fullPath: '/projetos/$slug'
+      preLoaderRoute: typeof ProjetosSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/quem-somos/': {
+      id: '/quem-somos/'
+      path: '/quem-somos'
+      fullPath: '/quem-somos/'
+      preLoaderRoute: typeof QuemSomosIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/quem-somos/territorio': {
+      id: '/quem-somos/territorio'
+      path: '/quem-somos/territorio'
+      fullPath: '/quem-somos/territorio'
+      preLoaderRoute: typeof QuemSomosTerritorioRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/transparencia/': {
+      id: '/transparencia/'
+      path: '/'
+      fullPath: '/transparencia/'
+      preLoaderRoute: typeof TransparenciaIndexRouteImport
+      parentRoute: typeof TransparenciaRoute
+    }
+    '/transparencia/governanca-integridade': {
+      id: '/transparencia/governanca-integridade'
+      path: '/governanca-integridade'
+      fullPath: '/transparencia/governanca-integridade'
+      preLoaderRoute: typeof TransparenciaGovernancaIntegridadeRouteImport
+      parentRoute: typeof TransparenciaRoute
     }
   }
 }
