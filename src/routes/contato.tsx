@@ -14,6 +14,8 @@ export const Route = createFileRoute("/contato")({
       { property: "og:title", content: "Contato — Associação Maggu" },
       { property: "og:description", content: "Fale com a Associação Sócio Cultural Maggu." },
       { property: "og:url", content: "/contato" },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
     links: [{ rel: "canonical", href: "/contato" }],
   }),

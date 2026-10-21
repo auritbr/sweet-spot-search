@@ -13,6 +13,8 @@ export const Route = createFileRoute("/equipe")({
       { property: "og:title", content: "Nossa Equipe — Associação Maggu" },
       { property: "og:description", content: "As pessoas por trás do nosso trabalho." },
       { property: "og:url", content: "/equipe" },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
     links: [{ rel: "canonical", href: "/equipe" }],
   }),

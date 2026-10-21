@@ -1,5 +1,10 @@
 # Roadmap
 
+- [x] Criar Apoiadores e Redes com registros validados e CTA global
+- [x] Preparar Notas e Pronunciamentos e Política de Salvaguarda sem conteúdo fictício
+- [x] Adicionar Podcast / Vídeos à Galeria e novos links ao Legal do footer
+- [x] Validar filtros, destinos e responsividade nas larguras solicitadas
+
 - [x] Empilhar e refinar os três canais principais de Contato
 - [x] Recriar o CTA compartilhado como seção gráfica de fechamento
 - [x] Aplicar o CTA compartilhado à Home
