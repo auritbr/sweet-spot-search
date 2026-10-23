@@ -5,11 +5,13 @@ import { PageHero, HeroButton, Section, SectionTitle } from "@/components/PageHe
 import { ArcThick, HatchedCircle, QuarterCircle, Triangle } from "@/components/Shapes";
 import logoAsset from "@/assets/logo-maggu.png";
 import pontoCulturaAsset from "@/assets/ponto-de-cultura.png";
+import { PressKitDownload } from "@/components/PressKitDownload";
 import {
   clipping,
   officialPhotos,
   pressDocs,
-  pressKitUrl,
+  pressKitFile,
+  publishedPressKit,
   pressFacts,
   pressKitExcludes,
   pressKitIncludes,
@@ -30,6 +32,8 @@ export const Route = createFileRoute("/imprensa")({
       { property: "og:description", content: description },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
+      { property: "og:image", content: "https://images.unsplash.com/photo-1495020689067-958852a7765e?auto=format&fit=crop&w=1920&q=80" },
+      { name: "twitter:image", content: "https://images.unsplash.com/photo-1495020689067-958852a7765e?auto=format&fit=crop&w=1920&q=80" },
     ],
     links: [{ rel: "canonical", href: "/imprensa" }],
   }),
@@ -327,11 +331,7 @@ function Imprensa() {
                     </li>
                   ))}
                 </ul>
-                {pressKitUrl ? (
-                  <a href={pressKitUrl} className="mt-5 inline-flex min-h-11 items-center gap-2 rounded-full bg-brand-petrol px-6 py-2.5 text-sm font-bold text-primary-foreground shadow-[0_12px_24px_-20px_rgba(0,56,76,0.9)] transition hover:-translate-y-0.5 hover:bg-brand-red">
-                    <Download className="size-4" aria-hidden="true" /> Baixar Kit de Imprensa
-                  </a>
-                ) : (
+                {!publishedPressKit(pressKitFile) && (
                   <p className="mt-5 rounded-[12px] border border-dashed border-brand-petrol/18 bg-brand-soft/40 px-4 py-3 text-[13px] leading-relaxed text-brand-gray">
                     Kit de Imprensa em organização. Materiais oficiais podem ser solicitados pelo contato de imprensa.
                   </p>
@@ -345,6 +345,9 @@ function Imprensa() {
                   <li key={item} className="rounded-full border border-brand-petrol/10 bg-white/70 px-3 py-1.5">{item}</li>
                 ))}
               </ul>
+            </div>
+            <div className={publishedPressKit(pressKitFile) ? "px-5 pb-5 md:px-6" : undefined}>
+              <PressKitDownload file={pressKitFile} />
             </div>
           </div>
         </div>
