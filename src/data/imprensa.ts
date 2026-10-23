@@ -85,8 +85,22 @@ export const clipping: ClippingItem[] = [];
 // Somente documentos com arquivo real publicado.
 export type PressDoc = { name: string; format: string; url: string };
 export const pressDocs: PressDoc[] = [];
-// Kit de Imprensa: definir a URL real quando o arquivo existir.
-export const pressKitUrl: string | null = null;
+// Cadastrar somente um arquivo real, aprovado para publicação.
+export type PressKitFile = { url: string; published: boolean; validated: boolean };
+export const pressKitFile: PressKitFile | null = null;
+
+export function publishedPressKit(file: PressKitFile | null): string | null {
+  if (!file?.published || !file.validated) return null;
+  const value = file.url.trim();
+  if (!value || value.includes("#")) return null;
+  if (/^\/(?!\/)[^\s]+/.test(value) && value !== "/") return value;
+  try {
+    const url = new URL(value);
+    return url.protocol === "https:" && !url.username && !url.password && url.pathname !== "/" ? value : null;
+  } catch {
+    return null;
+  }
+}
 
 export const pressKitIncludes = [
   "Release institucional",

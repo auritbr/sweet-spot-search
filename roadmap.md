@@ -1,5 +1,9 @@
 # Roadmap
 
+- [ ] Condicionar download do Kit a arquivo cadastrado e validado
+- [ ] Preparar cards de YouTube e Spotify sem inserir mídia fictícia
+- [ ] Validar regras de publicação e as seis larguras móveis solicitadas
+
 - [x] Preparar carrossel de histórias validadas sem preencher o estado vazio
 - [x] Paginar evidências em grupos de três e reutilizar o padrão documental ODS
 - [x] Validar filtros, navegação e larguras móveis solicitadas
