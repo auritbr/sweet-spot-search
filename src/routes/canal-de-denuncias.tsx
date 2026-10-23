@@ -5,8 +5,9 @@
 // interesse; regras formais de confidencialidade; guarda e descarte de dados; regras de
 // acesso; prazos internos; possibilidade ou não de anonimato; eventual proteção contra
 // retaliação; integração com Código de Ética e com a política de Privacidade.
-// Enquanto o fluxo não for aprovado, o canal não recebe relatos: sem endpoint, sem
-// formulário, sem e-mail substitutivo e sem envio de dados.
+// O recebimento de relatos acontece pelo e-mail específico do canal
+// (contatooscmaggu@gmail.com). Seguem pendentes, sem anúncio público: endpoint e
+// formulário próprios e os fluxos internos listados acima.
 import { createFileRoute, Link } from "@tanstack/react-router";
 import {
   AlertTriangle,
@@ -14,6 +15,7 @@ import {
   Ban,
   Coins,
   Lock,
+  Mail,
   MessageSquareWarning,
   Scale,
   ScrollText,
@@ -23,6 +25,7 @@ import {
 } from "lucide-react";
 import { PageHero } from "@/components/PageHero";
 import { CompactFinalCTA } from "@/components/CompactFinalCTA";
+import { Button } from "@/components/ui/button";
 
 export const Route = createFileRoute("/canal-de-denuncias")({
   head: () => ({
@@ -177,15 +180,30 @@ function CanalDenuncias() {
 
       {/* Canal digital */}
       <section className="relative overflow-hidden bg-white py-12 md:py-16" aria-labelledby="canal-digital">
+        <span className="pointer-events-none absolute -left-14 top-10 hidden size-32 rounded-full border border-brand-cyan/15 md:block" aria-hidden="true" />
+        <span className="pointer-events-none absolute -right-10 bottom-8 hidden size-20 rotate-45 border border-brand-gold/25 md:block" aria-hidden="true" />
         <div className="container-x relative max-w-3xl">
           <Eyebrow>Canal digital</Eyebrow>
           <h2 id="canal-digital" className="mt-3 text-brand-ink" style={{ fontSize: "clamp(1.2rem, 1.8vw, 1.55rem)", lineHeight: 1.3, fontWeight: 700 }}>
-            O envio de relatos será disponibilizado após a conclusão da estruturação operacional.
+            Envie seu relato
           </h2>
-          <div className="mt-4 space-y-3 text-brand-gray" style={{ lineHeight: 1.75 }}>
-            <p>A Associação está definindo as responsabilidades, os procedimentos de acesso, o tratamento das informações e as medidas de proteção de dados necessárias para o funcionamento do canal.</p>
-            <p>Assim que esse fluxo estiver institucionalmente aprovado e tecnicamente implementado, esta área será atualizada com as orientações para envio.</p>
+          <p className="mt-3 text-brand-gray" style={{ lineHeight: 1.75 }}>
+            Relatos relacionados à integridade institucional podem ser encaminhados pelo canal específico da Associação Maggu.
+          </p>
+          <div className="mt-5 flex flex-wrap items-center gap-3 rounded-[14px] border border-brand-petrol/10 bg-brand-soft/45 p-4 backdrop-blur-md">
+            <span className="flex size-9 shrink-0 items-center justify-center rounded-full bg-brand-cyan/12 text-brand-petrol" aria-hidden="true">
+              <Mail className="size-[18px]" strokeWidth={2} />
+            </span>
+            <span className="min-w-0">
+              <span className="block text-[10px] font-semibold uppercase tracking-[0.18em] text-brand-gray/70">E-mail do Canal de Denúncia e Relato Ético</span>
+              <a href="mailto:contatooscmaggu@gmail.com" className="block break-all text-[15px] font-semibold text-brand-petrol underline decoration-brand-cyan underline-offset-4">
+                contatooscmaggu@gmail.com
+              </a>
+            </span>
           </div>
+          <Button asChild size="sm" className="mt-4 rounded-full bg-brand-petrol px-5 text-primary-foreground hover:bg-brand-red">
+            <a href="mailto:contatooscmaggu@gmail.com">Enviar relato por e-mail</a>
+          </Button>
         </div>
       </section>
 
