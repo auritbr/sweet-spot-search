@@ -12,6 +12,7 @@ import {
 } from "lucide-react";
 
 import { CompactFinalCTA } from "@/components/CompactFinalCTA";
+import { DocumentEvidenceCard } from "@/components/DocumentEvidenceCard";
 import { PageHero, HeroButton, Section, SectionTitle } from "@/components/PageHero";
 import { ArcThick, DottedCurve, HatchedCircle, QuarterCircle } from "@/components/Shapes";
 
@@ -54,7 +55,6 @@ const commissionIcons = [Compass, Layers, Target, RefreshCw];
 const journeyColors = ["#08B9E6", "#00689D", "#FD9D24", "#C5192D", "#3F7E44", "#00384C"];
 const indicatorIcons = [Sprout, Layers, Users, Handshake, FileText];
 const indicatorColors = ["#3F7E44", "#08B9E6", "#FD9D24", "#00689D", "#C5192D"];
-const evidenceColors = ["#00689D", "#FD9D24", "#C5192D", "#3F7E44", "#08B9E6", "#00384C"];
 
 
 function OdsMaggu2030() {
@@ -246,26 +246,7 @@ function OdsMaggu2030() {
           <SectionTitle align="center" eyebrow="Publicidade" title="Documentos e evidências" text="Materiais que sustentam os compromissos assumidos e permitem acompanhamento público." />
           {odsEvidence.length > 0 ? (
           <ul className="mx-auto max-w-3xl space-y-3">
-            {odsEvidence.map((doc, i) => {
-              const color = evidenceColors[i % evidenceColors.length];
-              return (
-                <li key={doc.name} className="group flex flex-wrap items-center gap-3 rounded-[16px] border border-brand-petrol/8 bg-white/80 px-5 py-4 transition hover:border-brand-petrol/18">
-                  <span
-                    className="inline-flex size-10 shrink-0 items-center justify-center rounded-xl"
-                    style={{ backgroundColor: `${color}1f`, color }}
-                  >
-                    <FileText className="size-4" aria-hidden="true" />
-                  </span>
-                  <div className="min-w-0 flex-1">
-                    <p className="text-[15px] font-semibold text-brand-ink">{doc.name}</p>
-                    <p className="text-xs" style={{ color }}>{doc.category}</p>
-                  </div>
-                  <a href={doc.url} className="inline-flex shrink-0 items-center gap-2 rounded-full border border-brand-petrol/20 px-4 py-2 text-xs font-semibold text-brand-petrol transition hover:bg-brand-soft">
-                    Visualizar <ArrowUpRight className="size-3.5" aria-hidden="true" />
-                  </a>
-                </li>
-              );
-            })}
+            {odsEvidence.map((doc, i) => <DocumentEvidenceCard key={doc.name} title={doc.name} category={doc.category} url={doc.url} index={i} />)}
           </ul>
           ) : (
             <p className="mx-auto max-w-3xl rounded-[16px] border border-dashed border-brand-petrol/18 bg-white/70 px-5 py-5 text-center text-sm text-brand-gray">
