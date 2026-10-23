@@ -1,5 +1,9 @@
 # Roadmap
 
+- [x] Preparar carrossel de histórias validadas sem preencher o estado vazio
+- [x] Paginar evidências em grupos de três e reutilizar o padrão documental ODS
+- [x] Validar filtros, navegação e larguras móveis solicitadas
+
 - [x] Criar Apoiadores e Redes com registros validados e CTA global
 - [x] Preparar Notas e Pronunciamentos e Política de Salvaguarda sem conteúdo fictício
 - [x] Adicionar Podcast / Vídeos à Galeria e novos links ao Legal do footer
