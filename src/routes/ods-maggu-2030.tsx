@@ -216,25 +216,20 @@ function OdsMaggu2030() {
       {/* Indicadores */}
       <Section className="overflow-hidden bg-white">
         <div className="container-x">
-          <SectionTitle align="center" eyebrow="Acompanhamento" title="Indicadores" text="Indicadores institucionais em construção conforme o avanço da jornada." />
-          <div className="mx-auto grid max-w-5xl gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          <SectionTitle align="center" eyebrow="Acompanhamento" title="Indicadores" text="Indicadores que ajudam a acompanhar a atuação da Associação e sua relação com os compromissos institucionais assumidos." />
+          <div className="mx-auto flex max-w-5xl flex-wrap justify-center gap-4">
             {odsIndicators.map((item, i) => {
               const Icon = indicatorIcons[i % indicatorIcons.length];
               const color = indicatorColors[i % indicatorColors.length];
               return (
-                <article key={item.label} className="group relative overflow-hidden rounded-[16px] border border-brand-petrol/8 bg-white p-5 shadow-[0_12px_30px_-28px_rgba(0,56,76,0.65)] transition duration-300 hover:-translate-y-0.5 hover:border-brand-petrol/15">
+                <article key={item.label} className="group relative min-h-44 w-full overflow-hidden rounded-[16px] border border-brand-petrol/8 bg-white p-5 shadow-[0_12px_30px_-28px_rgba(0,56,76,0.65)] transition duration-300 hover:-translate-y-0.5 hover:border-brand-petrol/15 sm:w-[calc(50%-8px)] lg:w-[calc(33.333%-10.67px)]">
                   <span className="pointer-events-none absolute right-5 top-5 size-2 rotate-45 opacity-45" style={{ backgroundColor: color }} aria-hidden="true" />
-                  <div className="flex items-start gap-4">
-                    <span className="inline-flex size-9 shrink-0 items-center justify-center rounded-full border border-brand-petrol/8 bg-brand-soft/60" style={{ color }} aria-hidden="true">
-                      <Icon className="size-4" />
-                    </span>
-                    <div className="min-w-0">
-                      <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-brand-gray/65">Em consolidação</p>
-                      <p className="text-[15px] font-semibold leading-snug text-brand-ink">{item.label}</p>
-                      <span className="mt-3 block h-px w-8" style={{ backgroundColor: `${color}66` }} aria-hidden="true" />
-                      <p className="mt-3 text-sm leading-[1.7] text-brand-gray">{item.note}</p>
-                    </div>
-                  </div>
+                  <span className="inline-flex size-9 items-center justify-center rounded-full border border-brand-petrol/8 bg-brand-soft/60" style={{ color }} aria-hidden="true">
+                    <Icon className="size-4" />
+                  </span>
+                  <p className="mt-4 text-[10px] font-semibold uppercase tracking-[0.16em] text-brand-gray/65">{item.label}</p>
+                  <p className={`mt-1.5 font-bold text-brand-petrol ${item.smallValue ? "text-xl leading-snug" : "text-3xl"}`}>{item.value}</p>
+                  <p className="mt-2 text-sm leading-[1.7] text-brand-gray">{item.note}</p>
                 </article>
               );
             })}

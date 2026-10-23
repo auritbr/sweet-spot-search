@@ -41,12 +41,14 @@ export const odsCommitments = [
   { title: "Governança e parcerias", text: "Qualificar a gestão institucional e a atuação em rede.", color: "#00689D" },
 ];
 
-export const odsIndicators = [
-  { label: "Projetos relacionados", note: "Frentes do Ecossistema conectadas aos compromissos." },
-  { label: "Ações realizadas", note: "Atividades formativas, culturais e comunitárias no período." },
-  { label: "Públicos atendidos", note: "Participantes alcançados pelas iniciativas." },
-  { label: "Parceiros envolvidos", note: "Organizações e instituições que apoiam a jornada." },
-  { label: "Evidências publicadas", note: "Documentos e registros disponibilizados publicamente." },
+export type OdsIndicator = { label: string; value: string; note: string; smallValue?: boolean };
+
+export const odsIndicators: OdsIndicator[] = [
+  { label: "Projetos relacionados", value: "9+", note: "Projetos e iniciativas do Ecossistema Maggu conectados aos compromissos institucionais." },
+  { label: "Ações realizadas", value: "90+", note: "Atividades culturais, formativas, comunitárias e institucionais realizadas." },
+  { label: "Públicos atendidos", value: "5.000+", note: "Pessoas alcançadas pelas iniciativas, atividades e ações da Associação." },
+  { label: "Parceiros envolvidos", value: "19+", note: "Organizações, instituições e parceiros que fortalecem a atuação e as iniciativas da Associação." },
+  { label: "Evidências publicadas", value: "Em consolidação", smallValue: true, note: "Documentos e registros disponibilizados publicamente para acompanhamento dos compromissos e resultados." },
 ];
 
 // Somente documentos/evidências com arquivo real publicado.
