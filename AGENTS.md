@@ -10,6 +10,7 @@
 <!-- LOVABLE:END -->
 
 - Institutional connections and gallery audiovisual catalogues use typed local data modules with explicit publication/validation gates, so a future CMS can supply records without changing page presentation.
+- GalleryMediaCard derives platform presentation from typed platform records with host-validated external URLs, and PressKitDownload uses a published/validated file gate; this keeps future CMS data separate from rendering and prevents placeholder destinations.
 - Keep supporters/partners and networks/articulations in separate mandatory categories; do not source connections from the legacy unclassified partners list.
 - Unavailable safeguarding and institutional statements have dedicated leaf routes showing publication states, so footer destinations remain valid without fabricated documents.
 - ODS and Impact evidence lists use DocumentEvidenceCard as their single presentation, preventing divergent document styles.

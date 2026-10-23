@@ -45,6 +45,9 @@
   --color-document-blue: #00689D;
   --color-document-amber: #FD9D24;
   --color-document-green: #3F7E44;
+  --color-platform-youtube: #FF0000;
+  --color-platform-spotify: #1DB954;
+  --color-platform-spotify-ink: #137C39;
 }
 
 :root {

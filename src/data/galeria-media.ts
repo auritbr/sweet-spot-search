@@ -1,6 +1,6 @@
 export type GalleryMedia = {
   id: string;
-  type: "Podcast" | "Vídeo";
+  platform: "YouTube" | "Spotify";
   title: string;
   thumbnail: string;
   alt: string;
@@ -15,6 +15,19 @@ export type GalleryMedia = {
 // No episodes or videos have been validated for publication yet.
 export const galleryMedia: GalleryMedia[] = [];
 
+export function validPlatformUrl(platform: GalleryMedia["platform"], value: string) {
+  try {
+    const url = new URL(value);
+    if (url.protocol !== "https:" || url.username || url.password) return false;
+    const host = url.hostname.toLowerCase();
+    return platform === "YouTube"
+      ? ["youtube.com", "www.youtube.com", "m.youtube.com", "youtu.be", "music.youtube.com"].includes(host) && url.pathname !== "/"
+      : platform === "Spotify" && host === "open.spotify.com" && /^\/(?:intl-[a-z-]+\/)?(?:episode|show|track|album|playlist)\/[^/]+/.test(url.pathname);
+  } catch {
+    return false;
+  }
+}
+
 export function publishedMedia(records: GalleryMedia[]) {
-  return records.filter((item) => item.published && item.validated && item.title.trim() && item.thumbnail.trim() && item.alt.trim() && /^https?:\/\//i.test(item.url)).sort((a, b) => a.order - b.order);
+  return records.filter((item) => item.published && item.validated && item.title.trim() && item.thumbnail.trim() && item.alt.trim() && validPlatformUrl(item.platform, item.url)).sort((a, b) => a.order - b.order);
 }

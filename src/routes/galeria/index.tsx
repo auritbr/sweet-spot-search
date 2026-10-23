@@ -4,7 +4,7 @@ import { PageHero, Section } from "@/components/PageHero";
 import { BrushStroke, HatchedCircle, Triangle } from "@/components/Shapes";
 import { albums } from "@/data/site";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
-import { Button } from "@/components/ui/button";
+import { GalleryMediaCard } from "@/components/GalleryMediaCard";
 import { galleryMedia, publishedMedia } from "@/data/galeria-media";
 
 export const Route = createFileRoute("/galeria/")({
@@ -156,16 +156,7 @@ function Galeria() {
             </TabsContent>
             <TabsContent value="podcast-videos">
               {media.length ? <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-                {media.map((item) => <article key={item.id} className="overflow-hidden rounded-lg border border-brand-petrol/10 bg-card">
-                  <img src={item.thumbnail} alt={item.alt} loading="lazy" className="aspect-video w-full object-cover" />
-                  <div className="p-5">
-                    <p className="text-xs font-semibold text-brand-red">{item.type}</p>
-                    <h2 className="mt-2 text-lg font-semibold leading-snug">{item.title}</h2>
-                    {item.date && <time dateTime={item.date} className="mt-2 block text-xs text-brand-gray">{new Intl.DateTimeFormat("pt-BR", { timeZone: "UTC" }).format(new Date(item.date))}</time>}
-                    {item.description && <p className="mt-3 text-sm leading-relaxed text-brand-gray">{item.description}</p>}
-                    <Button asChild size="sm" className="mt-4 rounded-full"><a href={item.url} target="_blank" rel="noopener noreferrer" aria-label={`${item.type === "Podcast" ? "Ouvir" : "Assistir"}: ${item.title}`}>{item.type === "Podcast" ? "Ouvir" : "Assistir"}</a></Button>
-                  </div>
-                </article>)}
+                {media.map((item) => <GalleryMediaCard key={item.id} item={item} />)}
               </div> : <p className="border-y border-brand-petrol/10 py-8 text-sm leading-relaxed text-brand-gray">Nenhum podcast ou vídeo publicado nesta categoria neste momento.</p>}
             </TabsContent>
           </Tabs>

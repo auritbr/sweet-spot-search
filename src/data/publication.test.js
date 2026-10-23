@@ -4,7 +4,7 @@ import { publishedMedia } from "./galeria-media";
 
 // Synthetic records are test fixtures only; never included in the public catalogues.
 const connection = { id: "test", name: "Fixture", logo: "/fixture.png", alt: "Logo da Fixture", category: "APOIADOR/PARCEIRO", order: 1, published: true, validated: true, authorized: true };
-const media = { id: "test", type: "Vídeo", title: "Fixture", thumbnail: "/fixture.jpg", alt: "Fixture", url: "https://example.org/video", order: 1, published: true, validated: true };
+const media = { id: "test", platform: "YouTube", title: "Fixture", thumbnail: "/fixture.jpg", alt: "Fixture", url: "https://www.youtube.com/watch?v=test", order: 1, published: true, validated: true };
 
 describe("institutional publication", () => {
   test("unpublished connections cannot appear", () => expect(publishedConnections([{ ...connection, published: false }], "APOIADOR/PARCEIRO")).toEqual([]));
