@@ -12,12 +12,14 @@ export const Route = createFileRoute("/impacto-memoria")({ head:()=>({meta:[
  {title:"Impacto & Memória | Associação Maggu"},{name:"description",content:"Conheça marcos, memórias e evidências da trajetória da Associação Maggu."},{property:"og:title",content:"Impacto & Memória | Associação Maggu"},{property:"og:description",content:"Resultados e histórias da Associação Maggu caminham juntos."},{property:"og:type",content:"website"},{name:"twitter:card",content:"summary_large_image"},
 ]}),component:ImpactoMemoria });
 
-const indicators=[
- {label:"Anos de trajetória",status:"Referência cultural desde 1999",note:"Distinta da formalização jurídica em 2025.",icon:History,tone:"bg-brand-red/10 text-brand-red",shape:"bg-brand-red/20"},
- {label:"Pessoas alcançadas",status:"Em consolidação",note:"Publicação após validação interna.",icon:Users,tone:"bg-brand-cyan/10 text-brand-petrol",shape:"bg-brand-cyan/20"},
- {label:"Atividades realizadas",status:"Em consolidação",note:"Organização por período e categoria.",icon:CalendarCheck2,tone:"bg-brand-gold/15 text-brand-petrol",shape:"bg-brand-gold/25"},
- {label:"Projetos ativos",status:"Estrutura preparada",note:"Atualização futura pela gestão de conteúdo.",icon:FolderKanban,tone:"bg-brand-red/10 text-brand-red",shape:"bg-brand-red/20"},
- {label:"Territórios e parcerias",status:"Em consolidação",note:"Somente dados documentados serão publicados.",icon:MapPinned,tone:"bg-brand-cyan/10 text-brand-petrol",shape:"bg-brand-cyan/20"},
+type Indicator = {label:string;value:string;note:string;icon:typeof History;tone:string;shape:string;smallValue?:boolean;extra?:string};
+
+const indicators:Indicator[]=[
+ {label:"Anos de trajetória",value:"27 anos",note:"Trajetória cultural construída desde 1999.",icon:History,tone:"bg-brand-red/10 text-brand-red",shape:"bg-brand-red/20"},
+ {label:"Pessoas alcançadas",value:"5.000+",note:"Pessoas alcançadas pelas iniciativas, atividades e ações da Associação.",icon:Users,tone:"bg-brand-cyan/10 text-brand-petrol",shape:"bg-brand-cyan/20"},
+ {label:"Atividades realizadas",value:"90+",note:"Atividades culturais, formativas, comunitárias e institucionais realizadas.",icon:CalendarCheck2,tone:"bg-brand-gold/15 text-brand-petrol",shape:"bg-brand-gold/25"},
+ {label:"Projetos ativos",value:"9+",note:"Projetos e iniciativas em diferentes eixos do Ecossistema Maggu.",icon:FolderKanban,tone:"bg-brand-red/10 text-brand-red",shape:"bg-brand-red/20"},
+ {label:"Território e parcerias",value:"Benedito Bentes I e II",smallValue:true,note:"Atuação presente nas 14 grotas e nos 22 conjuntos do território e entorno.",extra:"19+ parceiros",icon:MapPinned,tone:"bg-brand-cyan/10 text-brand-petrol",shape:"bg-brand-cyan/20"},
 ];
 
 const timeline=[
@@ -43,7 +45,7 @@ function ImpactoMemoria(){return <>
    </div>
   </Section>
 
-  <Section className="overflow-hidden bg-brand-soft"><div className="container-x"><div className="mx-auto max-w-3xl text-center"><SectionTitle align="center" eyebrow="Indicadores" title="O que podemos acompanhar" /></div><div className="mx-auto grid max-w-6xl gap-3 sm:grid-cols-2 lg:grid-cols-5">{indicators.map((item,i)=>{const Icon=item.icon;return <article key={item.label} className="relative min-h-52 overflow-hidden rounded-[16px] border border-brand-petrol/8 bg-background/85 p-4 shadow-[0_14px_28px_-28px_rgba(0,56,76,0.55)]"><span className={`absolute -right-4 -top-4 size-11 ${i%2===0?"rounded-full":"rotate-45 rounded-sm"} ${item.shape}`} aria-hidden="true"/><span className={`inline-flex size-9 items-center justify-center rounded-full ${item.tone}`}><Icon className="size-4" aria-hidden="true"/></span><h3 className="mt-4 text-base leading-snug">{item.label}</h3><p className="mt-3 text-[13px] font-semibold text-brand-petrol">{item.status}</p><p className="mt-1.5 text-xs leading-relaxed text-brand-gray">{item.note}</p></article>})}</div></div></Section>
+  <Section className="overflow-hidden bg-brand-soft"><div className="container-x"><div className="mx-auto max-w-3xl text-center"><SectionTitle align="center" eyebrow="Indicadores" title="O que podemos acompanhar" /></div><div className="mx-auto flex max-w-6xl flex-wrap justify-center gap-3">{indicators.map((item,i)=>{const Icon=item.icon;return <article key={item.label} className="relative min-h-48 w-full overflow-hidden rounded-[16px] border border-brand-petrol/8 bg-background/85 p-4 shadow-[0_14px_28px_-28px_rgba(0,56,76,0.55)] sm:w-[calc(50%-6px)] lg:w-[calc(33.333%-8px)]"><span className={`absolute -right-4 -top-4 size-11 ${i%2===0?"rounded-full":"rotate-45 rounded-sm"} ${item.shape}`} aria-hidden="true"/><span className={`inline-flex size-9 items-center justify-center rounded-full ${item.tone}`}><Icon className="size-4" aria-hidden="true"/></span><h3 className="mt-4 text-base leading-snug text-brand-ink">{item.label}</h3><p className={`mt-2 font-bold text-brand-petrol ${item.smallValue?"text-xl leading-snug":"text-3xl"}`}>{item.value}</p><p className="mt-2 text-xs leading-relaxed text-brand-gray">{item.note}</p>{item.extra?<span className="mt-3 inline-flex items-center rounded-full border border-brand-petrol/10 bg-brand-cyan/10 px-3 py-1 text-[11px] font-semibold text-brand-petrol">{item.extra}</span>:null}</article>})}</div></div></Section>
 
   <Section id="memoria" className="relative overflow-hidden bg-background">
    <HatchedCircle size={96} color="#ED1C24" className="pointer-events-none absolute -left-11 bottom-2 opacity-[0.07]" />
