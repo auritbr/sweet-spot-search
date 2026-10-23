@@ -42,6 +42,9 @@
   --color-brand-ink: var(--brand-ink);
   --color-brand-gray: var(--brand-gray);
   --color-brand-soft: var(--brand-soft);
+  --color-document-blue: #00689D;
+  --color-document-amber: #FD9D24;
+  --color-document-green: #3F7E44;
 }
 
 :root {
