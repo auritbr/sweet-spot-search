@@ -22,8 +22,8 @@ export function EvidenceBank({ items, initiatives }: { items: Evidence[]; initia
         <p className="mx-auto -mt-1 max-w-[680px] text-[15px] leading-relaxed text-brand-gray">Certificados, declarações, registros, programas, publicações, matérias, relatórios e outros documentos ajudam a comprovar e preservar a trajetória das iniciativas do Ecossistema Maggu.</p>
       </div>
       <div className="mx-auto mt-7 flex max-w-[900px] flex-wrap items-center justify-center gap-2 rounded-2xl border border-brand-petrol/10 bg-background/70 p-3">
-        <label className="flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.16em] text-brand-gray/70">Tipo
-          <select value={state.type} onChange={event => dispatch({ field: "type", value: event.target.value })} className={select}><option>{ALL_EVIDENCES}</option>{evidenceTypes.map(type => <option key={type}>{type}</option>)}</select>
+        <label className="flex min-w-0 max-w-full items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.16em] text-brand-gray/70">Tipo
+          <select value={state.type} onChange={event => dispatch({ field: "type", value: event.target.value })} className={`${select} min-w-0 max-w-[220px]`}><option>{ALL_EVIDENCES}</option>{evidenceTypes.map(type => <option key={type}>{type}</option>)}</select>
         </label>
         <label className="flex min-w-0 max-w-full items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.16em] text-brand-gray/70">Iniciativa
           <select value={state.initiative} onChange={event => dispatch({ field: "initiative", value: event.target.value })} className={`${select} min-w-0 max-w-[220px]`}>{[ALL_EVIDENCES, ...initiatives].map(initiative => <option key={initiative}>{initiative}</option>)}</select>
