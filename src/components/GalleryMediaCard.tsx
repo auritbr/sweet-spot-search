@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import type { GalleryMedia } from "@/data/galeria-media";
 
 const spotifyNode: Parameters<typeof Icon>[0]["iconNode"] = [
-  ["circle", { cx: 12, cy: 12, r: 10, key: "circle" }],
+  ["circle", { cx: "12", cy: "12", r: "10", key: "circle" }],
   ["path", { d: "M6 9c4-1.5 8-1 12 1", key: "wave-1" }],
   ["path", { d: "M7 12c3-1 6.5-.5 10 1", key: "wave-2" }],
   ["path", { d: "M8 15c2.5-.7 5-.3 8 1", key: "wave-3" }],
