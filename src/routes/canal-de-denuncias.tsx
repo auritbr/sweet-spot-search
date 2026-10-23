@@ -56,7 +56,7 @@ const principios = [
   { icon: Shield, title: "Respeito", text: "O tratamento de situações relacionadas à integridade deve preservar a dignidade das pessoas envolvidas." },
   { icon: Scale, title: "Imparcialidade", text: "A análise de situações relacionadas à integridade deve ocorrer sem julgamentos antecipados." },
   { icon: Ban, title: "Responsabilidade", text: "O canal deve ser utilizado de boa-fé e com informações verdadeiras." },
-  { icon: Lock, title: "Proteção das informações", text: "Os procedimentos de acesso, tratamento, armazenamento e proteção das informações serão definidos antes da ativação do recebimento eletrônico de relatos." },
+  { icon: Lock, title: "Proteção das informações", text: "As informações encaminhadas pelo canal devem ser tratadas de acordo com os princípios de proteção de dados e com os procedimentos institucionais aplicáveis." },
 ];
 
 function Eyebrow({ children, color = "#08B9E6" }: { children: string; color?: string }) {
@@ -124,23 +124,6 @@ function CanalDenuncias() {
         </div>
       </section>
 
-      {/* Estruturação do canal */}
-      <section className="relative overflow-hidden bg-white py-12 md:py-16" aria-labelledby="estruturacao-canal">
-        <span className="pointer-events-none absolute -left-14 bottom-4 hidden size-40 rounded-full border border-brand-red/15 md:block" aria-hidden="true" />
-        <div className="container-x relative max-w-3xl">
-          <div className="rounded-[18px] border border-brand-petrol/10 bg-brand-soft/45 p-6 backdrop-blur-md md:p-8">
-            <Eyebrow color="#FFB400">Estruturação do canal</Eyebrow>
-            <h2 id="estruturacao-canal" className="mt-3 text-brand-ink" style={{ fontSize: "clamp(1.25rem, 1.9vw, 1.6rem)", lineHeight: 1.3, fontWeight: 700 }}>
-              Um fluxo responsável precisa ser definido antes do recebimento de relatos.
-            </h2>
-            <div className="mt-4 space-y-3 text-brand-gray" style={{ lineHeight: 1.75 }}>
-              <p>A Associação Maggu está estruturando os procedimentos necessários para o funcionamento do Canal de Denúncia e Relato Ético, incluindo responsabilidades, acesso às informações, tratamento de dados, encaminhamento e guarda dos relatos.</p>
-              <p>O envio eletrônico será disponibilizado após a aprovação institucional e a implementação das medidas necessárias para seu funcionamento responsável.</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* Compromissos */}
       <section className="relative overflow-hidden bg-brand-petrol/[0.04] py-12 md:py-16" aria-labelledby="principios-canal">
         <span className="pointer-events-none absolute -right-16 top-10 hidden size-40 rounded-full border-[16px] border-brand-gold/10 md:block" aria-hidden="true" />
@@ -148,7 +131,7 @@ function CanalDenuncias() {
           <div className="text-center">
             <Eyebrow color="#00384C">Compromissos</Eyebrow>
             <h2 id="principios-canal" className="mt-3 text-brand-ink" style={{ fontSize: "clamp(1.35rem, 2vw, 1.8rem)", lineHeight: 1.25, fontWeight: 700 }}>
-              Princípios que orientam a estruturação do canal
+              Princípios que orientam o funcionamento do canal
             </h2>
           </div>
           <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
@@ -216,7 +199,7 @@ function CanalDenuncias() {
             Proteção das informações também faz parte do processo.
           </h2>
           <p className="mt-3 text-brand-gray" style={{ lineHeight: 1.75 }}>
-            A estruturação do Canal de Denúncia e Relato Ético considera os princípios e as regras previstos na Política de Privacidade e Proteção de Dados Pessoais da Associação Maggu. Antes da ativação do recebimento eletrônico, serão definidos os procedimentos específicos aplicáveis ao tratamento das informações encaminhadas pelo canal.
+            As informações pessoais eventualmente encaminhadas por meio do Canal de Denúncia e Relato Ético estão sujeitas aos princípios e às regras previstos na Política de Privacidade e Proteção de Dados Pessoais da Associação Maggu.
           </p>
           <Link to="/privacidade" className="mt-4 inline-flex items-center gap-2 text-[14px] font-semibold text-brand-petrol hover:text-brand-red">
             Conheça a Política de Privacidade
